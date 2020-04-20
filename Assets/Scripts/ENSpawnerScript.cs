@@ -5,7 +5,7 @@ using UnityEngine;
 public class ENSpawnerScript : MonoBehaviour
 {
     public GameObject Enemy1Prefab;
-    private Enemy1Script enemy1Script;
+    public GameObject Enemy2Prefab;
 
     private GameObject Camara;
 
@@ -38,27 +38,11 @@ public class ENSpawnerScript : MonoBehaviour
             if (whatToSpawn == 1)
             {
                 GameObject enemySpawned = Instantiate(Enemy1Prefab, new Vector3(Camara.transform.position.x + 10f, Camara.transform.position.y - 2f, 1f), Quaternion.identity);
-                enemy1Script = enemySpawned.GetComponent<Enemy1Script>();
-                //enemyScript.powerUpType = powerUpType.Energy;
             }
-            //else if (whatToSpawn == 2)
-            //{
-            //    GameObject enemySpawned = Instantiate(Enemy2Prefab, new Vector3(-5.5f, whereToSpawn, 1f), Quaternion.identity);
-            //    powerUpScript = enemySpawned.GetComponent<PowerUpScript>();
-            //    powerUpScript.powerUpType = powerUpType.Boost;
-            //}
-            //else if (whatToSpawn == 3)
-            //{
-            //    GameObject enemySpawned = Instantiate(PowerUpPrefab, new Vector3(-5.5f, whereToSpawn, 1f), Quaternion.identity);
-            //    powerUpScript = enemySpawned.GetComponent<PowerUpScript>();
-            //    powerUpScript.powerUpType = powerUpType.Shield;
-            //}
-            //else if (whatToSpawn == 4)
-            //{
-            //    GameObject enemySpawned = Instantiate(PowerUpPrefab, new Vector3(-5.5f, whereToSpawn, 1f), Quaternion.identity);
-            //    powerUpScript = enemySpawned.GetComponent<PowerUpScript>();
-            //    //powerUpScript.powerUpType = powerUpType.PW4;
-            //}
+            else if (whatToSpawn == 2)
+            {
+                GameObject enemySpawned = Instantiate(Enemy2Prefab, new Vector3(-5.5f, whereToSpawn, 1f), Quaternion.identity);
+            }
 
             nextSpawn = Time.time + whenToSpawn;
         }
