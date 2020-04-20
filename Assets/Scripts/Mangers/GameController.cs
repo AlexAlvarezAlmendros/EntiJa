@@ -7,8 +7,10 @@ using System.IO;
 
 public class GameController : MonoBehaviour
 {
+    public Slider slider;
     public int lives;
     public int hiscore;
+    private float energy;
     public static GameController Instance { get; private set; }
     
 
@@ -47,6 +49,15 @@ public class GameController : MonoBehaviour
     public void BeginGame()
     {
 
+    }
+    public void setEnergy(float _energy)
+    {
+        energy = energy + _energy;
+        slider.value = energy;
+    }
+    public float getEnergy()
+    {
+        return energy;
     }
 
     public void DecrementLives()
