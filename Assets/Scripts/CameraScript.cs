@@ -6,37 +6,26 @@ public class CameraScript : MonoBehaviour
 {
     public GameObject Player;
     public float moveSpeed;
-
+    private void Start()
+    {
+        
+    }
+    private void Update()
+    {
+        transform.position = new Vector3(transform.position.x + 0.01f, transform.position.y, transform.position.z);
+    }
     void FixedUpdate()
     {
         float delta = Time.deltaTime * 1000;
-
-        //CAMERA RELOCATION
-        if (Player.transform.position.x < transform.position.x - 300)
-        {
-            transform.position = new Vector3(Player.transform.position.x - 300, transform.position.y, 0);
-        }
-        else if (Player.transform.position.x > transform.position.x + 290)
-        {
-            transform.position = new Vector3(Player.transform.position.x + 290, transform.position.y, 0);
-        }
-        if (Player.transform.position.y < transform.position.y - 300)
-        {
-            transform.position = new Vector3(transform.position.x, Player.transform.position.y - 300, 0);
-        }
-        else if (Player.transform.position.y > transform.position.y + 290)
-        {
-            transform.position = new Vector3(transform.position.x, Player.transform.position.y + 290, 0);
-        }
-
+        
         //MOVEMENT / TP PLAYER
-        if (Player.transform.position.x <= this.transform.position.x -6)
-        {
-            Player.transform.position = new Vector3(Player.transform.position.y, this.transform.position.x - 1,0);
-        }
-        else if (Player.transform.position.x >= this.transform.position.x + 6)
-        {
-            Player.transform.position = new Vector3(Player.transform.position.y, this.transform.position.x + 1, 0);
-        }
+        //if (Player.transform.position.x <= this.transform.position.x - 4.95)
+        //{
+        //    Player.transform.position = new Vector3(Player.transform.position.y, this.transform.position.x - 1, 0);
+        //}
+        //else if (Player.transform.position.x >= this.transform.position.x + 5.2)
+        //{
+        //    Player.transform.position = new Vector3(Player.transform.position.y, this.transform.position.x + 1, 0);
+        //}
     }
 }

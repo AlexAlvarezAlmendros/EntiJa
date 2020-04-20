@@ -10,42 +10,48 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  -
+  - 
   - Water
   - UI
-  -
-  -
-  - Ground
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0
     locked: 0
   - name: BackGround
-    uniqueID: 2025962291
+    uniqueID: 913430867
     locked: 0
-  - name: New Layer
-    uniqueID: 491434997
+  - name: Character/Misc
+    uniqueID: 1788267663
+    locked: 0
+  - name: Effects
+    uniqueID: 2557041253
+    locked: 0
+  - name: UI
+    uniqueID: 597744997
     locked: 0

@@ -22,7 +22,8 @@ public class CarController : MonoBehaviour
     private BoxCollider2D boxCollider;
     private Rigidbody2D Man;
     private bool grounded;
-    
+    public GameObject cam;
+
     public GameObject laser;
     
 
@@ -42,6 +43,10 @@ public class CarController : MonoBehaviour
 
     private void Update()
     {
+        if (transform.position.x < cam.transform.position.x - 3.65f)
+        {
+            transform.position = new Vector3(cam.transform.position.x - 3.65f, transform.position.y, transform.position.z);
+        }
         if (grounded)
         {
             velocity.y = 0;
