@@ -98,7 +98,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Camara: {fileID: 0}
   EnemyHP: 1
-  jumpStrengh: 100
+  jumpStrengh: 10
+  jumpLengh: 5
   jumpDelay: 1000
   jumpTmp: 0
   jumped: 1
