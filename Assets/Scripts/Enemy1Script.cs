@@ -11,6 +11,7 @@ public class Enemy1Script : MonoBehaviour
     public float jumpDelay = 1000;
     public float jumpTmp = 0;
     public bool jumped = true;
+
     private int JumpedID;
 
     private Rigidbody2D rigidBody;
@@ -19,6 +20,7 @@ public class Enemy1Script : MonoBehaviour
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+        Camara = GameObject.FindWithTag("MainCamera");
         animator = GetComponent<Animator>();
         JumpedID = Animator.StringToHash("Jumped");
         //enabled = false;
@@ -35,17 +37,14 @@ public class Enemy1Script : MonoBehaviour
             //cameraScript.auidoS.clip = SoundManager.Instance.Enemy2Death;
             //cameraScript.auidoS.Play();
 
-            this.transform.position = new Vector3(this.transform.position.x, -13, 0);
-            //enabled = false; //DISABLE
-
+            Destroy(gameObject); //DESTROY
         }
-        else if (this.transform.position.x <= Camara.transform.position.x -100)
+        else if (this.transform.position.x <= Camara.transform.position.x -10 ||
+            this.transform.position.y <= Camara.transform.position.y - 10) 
         {
-            this.transform.position = new Vector3(this.transform.position.x, -15, 0);
-            enabled = false; //DISABLE
+            Destroy(gameObject); //DESTROY
         }
 
-        Debug.Log("1");
         if (jumped == true && jumpTmp <= jumpDelay) { jumpTmp += delta; }
         else if (jumpTmp >= jumpDelay) { jumped = false; jumpTmp = 0; }
         

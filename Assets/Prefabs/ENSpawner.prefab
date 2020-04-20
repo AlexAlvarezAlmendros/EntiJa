@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2151188764573482440}
-  - component: {fileID: 2151188764573482441}
+  - component: {fileID: 8215612645767416423}
   m_Layer: 0
   m_Name: ENSpawner
   m_TagString: EditorOnly
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2151188764573482441
+--- !u!114 &8215612645767416423
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,14 +40,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2151188764573482446}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7e79ba298274bc478d12f24823694f7, type: 3}
+  m_Script: {fileID: 11500000, guid: c67622e7d243b4249b2de46e665a313d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PowerUpPrefab: {fileID: 7756338486808616919, guid: 0ac8ce6636322844e9f6e012a0338309,
-    type: 3}
-  maxDelay: 10
-  minDelay: 2
-  FirstSpawn: 10
+  Enemy1Prefab: {fileID: 0}
+  Camara: {fileID: 0}
+  maxDelay: 0
+  minDelay: 0
+  FirstSpawn: 0
   whatToSpawn: 0
   whereToSpawn: 0
   whenToSpawn: 0

@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PowerUp { Energy, Boost, Shield, PW4 };
+public enum PowerUp { NULL, Energy, Boost, Shield, PW4 };
 
 public class PowerUpScript : MonoBehaviour
 {
-    public PowerUp powerUpType = PowerUp.Shield;
+    public PowerUp powerUpType = PowerUp.NULL;
 
     public GameObject Camara;
 
@@ -15,6 +15,7 @@ public class PowerUpScript : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        Camara = GameObject.FindWithTag("MainCamera");
 
         switch (powerUpType)
         {

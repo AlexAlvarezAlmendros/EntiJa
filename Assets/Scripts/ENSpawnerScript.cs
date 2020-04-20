@@ -7,7 +7,7 @@ public class ENSpawnerScript : MonoBehaviour
     public GameObject Enemy1Prefab;
     private Enemy1Script enemy1Script;
 
-    public GameObject Camara;
+    private GameObject Camara;
 
     public float maxDelay;
     public float minDelay;
@@ -22,24 +22,24 @@ public class ENSpawnerScript : MonoBehaviour
     void Start()
     {
         nextSpawn = FirstSpawn;
+        Camara = GameObject.FindWithTag("MainCamera");
     }
 
     void Update()
     {
         if (Time.time > nextSpawn) // if time has come
         {
-            whatToSpawn = Random.Range(1, 5); //define random value between 1 and 4 (5 is ecluded)
+            whatToSpawn = Random.Range(1, 2); //define random value between 1 and 4 (5 is ecluded)
 
-            whereToSpawn = Random.Range(0, 5); // define random value between 0 and 4 (5 is excluded)
+            //whereToSpawn = Random.Range(0, 5); // define random value between 0 and 4 (5 is excluded)
 
             whenToSpawn = Random.Range(minDelay, maxDelay); // define random time value to spawn
 
             if (whatToSpawn == 1)
             {
-                GameObject enemySpawned = Instantiate(Enemy1Prefab, new Vector3(-5.5f, whereToSpawn, 1f), Quaternion.identity);
+                GameObject enemySpawned = Instantiate(Enemy1Prefab, new Vector3(Camara.transform.position.x + 10f, Camara.transform.position.y - 2f, 1f), Quaternion.identity);
                 enemy1Script = enemySpawned.GetComponent<Enemy1Script>();
                 //enemyScript.powerUpType = powerUpType.Energy;
-                enemy1Script.Camara = this.Camara;
             }
             //else if (whatToSpawn == 2)
             //{
