@@ -11,7 +11,7 @@ public class CarController : MonoBehaviour
     private float groundFriction = 70;
     private float jumpForce = 4;
     
-    private Animator anim;
+    private Animator animator;
     private Vector2 velocity;
     private BoxCollider2D collider;
     private Rigidbody2D rig;
@@ -27,7 +27,7 @@ public class CarController : MonoBehaviour
     {
         GameController.Instance.setEnergy(30);
         transform.position = new Vector3(-4.44f, -3.16f, 0f);
-        anim = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         collider = GetComponent<BoxCollider2D>();
 
         GroundingID = Animator.StringToHash("Grounding");

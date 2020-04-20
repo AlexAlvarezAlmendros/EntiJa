@@ -1349,7 +1349,7 @@ GameObject:
   - component: {fileID: 1342583486}
   m_Layer: 0
   m_Name: Coche
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1430,9 +1430,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb117e8a2316aa84eaccf703c7f40730, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundLayerMask:
-    serializedVersion: 2
-    m_Bits: 0
   cam: {fileID: 197614044}
   laser: {fileID: 3966129797073975471, guid: 4a119885d66b5bd4bba3052069ba16aa, type: 3}
 --- !u!61 &1342583484
