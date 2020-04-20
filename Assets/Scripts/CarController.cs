@@ -10,7 +10,7 @@ public class CarController : MonoBehaviour
     private float walkAcceleration = 75;
     private float groundFriction = 70;
     private float jumpForce = 4;
-    
+
     private Animator animator;
     private Vector2 velocity;
     private BoxCollider2D collider;
@@ -18,10 +18,14 @@ public class CarController : MonoBehaviour
     public GameObject cam;
 
     public GameObject laser;
+    public Animator laserAnimator;
+    private bool canShoot = true;
+    public int shootDelay;
 
     private int GroundingID;
     private int JumpedID;
     private int FlyingID;
+    private int LaserShotID;
 
     void Start()
     {
@@ -29,6 +33,7 @@ public class CarController : MonoBehaviour
         transform.position = new Vector3(-4.44f, -3.16f, 0f);
         animator = GetComponent<Animator>();
         collider = GetComponent<BoxCollider2D>();
+        laserAnimator = laser.GetComponent<Animator>();
 
         GroundingID = Animator.StringToHash("Grounding");
         JumpedID = Animator.StringToHash("Jumped");
@@ -41,7 +46,6 @@ public class CarController : MonoBehaviour
     private void FixedUpdate()
     {
         bool isGrounding = animator.GetBool(GroundingID);
-        bool hasJumped = animator.GetBool(JumpedID);
         bool isFlying = animator.GetBool(FlyingID);
 
         if (transform.position.x < cam.transform.position.x - 3.65f)
@@ -54,16 +58,13 @@ public class CarController : MonoBehaviour
             rig.AddForce(jumpForce * transform.up, ForceMode2D.Impulse);
         }
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && canShoot)
         {
             animator.SetTrigger("Shoot");
             Debug.Log("click");
 
         }
-        else
-        {
-            animator.SetBool("Shoot", false);
-        }
+
         float moveInput = Input.GetAxisRaw("Horizontal");
         if (moveInput != 0)
         {
@@ -77,6 +78,18 @@ public class CarController : MonoBehaviour
         transform.Translate(velocity * Time.deltaTime);
 
         float energy = GameController.Instance.getEnergy();
+    }
+
+    public void StartLaserAnim()
+    {
+        laserAnimator.SetTrigger("LaserShot");
+        canShoot = false;
+    }
+
+    IEnumerator WaitToShoot()
+    {
+        yield return new WaitForSecondsRealtime(2);
+        canShoot = true;
     }
 
     void OnTriggerEnter2D(Collider2D coll)

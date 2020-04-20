@@ -35,6 +35,13 @@ AnimationClip:
     path: 
     classID: 212
     script: {fileID: 0}
+  - curve:
+    - time: 0.26666668
+      value: {fileID: 0}
+    attribute: laserAnimator
+    path: 
+    classID: 114
+    script: {fileID: 11500000, guid: fb117e8a2316aa84eaccf703c7f40730, type: 3}
   m_SampleRate: 60
   m_WrapMode: 0
   m_Bounds:
@@ -49,6 +56,13 @@ AnimationClip:
       typeID: 212
       customType: 23
       isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 0
+      attribute: 1517959906
+      script: {fileID: 11500000, guid: fb117e8a2316aa84eaccf703c7f40730, type: 3}
+      typeID: 114
+      customType: 0
+      isPPtrCurve: 1
     pptrCurveMapping:
     - {fileID: 21300000, guid: 6c10c70c78d94b24b9e7ba06ead71d06, type: 3}
     - {fileID: 21300000, guid: 255a879dfcfe0dd43855b48c79d83c0f, type: 3}
@@ -56,12 +70,13 @@ AnimationClip:
     - {fileID: 21300000, guid: f978f4db723c9a04fb0cc84b694277be, type: 3}
     - {fileID: 21300000, guid: 4226e7dcf1f6dae4fa4512489b786cb2, type: 3}
     - {fileID: 21300000, guid: ec6c19c70ad86af4bb6ecda1e33b7c9a, type: 3}
+    - {fileID: 0}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.26666668
+    m_StopTime: 0.28333336
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
