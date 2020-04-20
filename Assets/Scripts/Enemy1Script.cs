@@ -9,8 +9,8 @@ public class Enemy1Script : MonoBehaviour
     public int EnemyHP = 1;
     public float jumpStrengh = 100;
     public float jumpDelay = 1000;
-    private float jumpTmp = 0;
-    private bool jumped = true;
+    public float jumpTmp = 0;
+    public bool jumped = true;
     private int JumpedID;
 
     private Rigidbody2D rigidBody;
@@ -28,7 +28,7 @@ public class Enemy1Script : MonoBehaviour
     {
         float delta = Time.deltaTime * 1000;
 
-        if (EnemyHP == 0)
+        if (EnemyHP <= 0)
         {
             GameController.Instance.hiscore += 100;
             //cameraScript = CameraController.GetComponent<CameraControl>();
@@ -45,7 +45,8 @@ public class Enemy1Script : MonoBehaviour
             enabled = false; //DISABLE
         }
 
-        if (jumped == true && jumpTmp < jumpDelay) { jumpTmp += delta; }
+        Debug.Log("1");
+        if (jumped == true && jumpTmp <= jumpDelay) { jumpTmp += delta; }
         else if (jumpTmp >= jumpDelay) { jumped = false; jumpTmp = 0; }
         
         if (jumped == false)
