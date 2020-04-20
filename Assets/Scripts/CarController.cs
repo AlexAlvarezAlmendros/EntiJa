@@ -54,11 +54,16 @@ public class CarController : MonoBehaviour
             rig.AddForce(jumpForce * transform.up, ForceMode2D.Impulse);
         }
 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetButtonDown("Fire1"))
         {
+            animator.SetTrigger("Shoot");
+            Debug.Log("click");
 
         }
-        
+        else
+        {
+            animator.SetBool("Shoot", false);
+        }
         float moveInput = Input.GetAxisRaw("Horizontal");
         if (moveInput != 0)
         {
