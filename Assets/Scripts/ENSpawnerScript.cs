@@ -8,7 +8,6 @@ public class ENSpawnerScript : MonoBehaviour
     private Enemy1Script enemy1Script;
 
     public GameObject Camara;
-    private CameraScript cameraScript;
 
     public float maxDelay;
     public float minDelay;
@@ -40,6 +39,7 @@ public class ENSpawnerScript : MonoBehaviour
                 GameObject enemySpawned = Instantiate(Enemy1Prefab, new Vector3(-5.5f, whereToSpawn, 1f), Quaternion.identity);
                 enemy1Script = enemySpawned.GetComponent<Enemy1Script>();
                 //enemyScript.powerUpType = powerUpType.Energy;
+                enemy1Script.Camara = this.Camara;
             }
             //else if (whatToSpawn == 2)
             //{

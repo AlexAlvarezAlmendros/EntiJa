@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PowerUp { ChangeScene, Shield, PW3, PW4 };
+public enum PowerUp { Energy, Boost, Shield, PW4 };
 
 public class PowerUpScript : MonoBehaviour
 {
     public PowerUp powerUpType = PowerUp.Shield;
+
+    public GameObject Camara;
 
     private Animator animator;
 
@@ -16,15 +18,17 @@ public class PowerUpScript : MonoBehaviour
 
         switch (powerUpType)
         {
-            case PowerUp.ChangeScene:
-                animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("AnimationChangeScene");
+            case PowerUp.Energy:
+
+                break;
+            case PowerUp.Boost:
+                //animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("AnimationChangeScene");
                 break;
             case PowerUp.Shield:
 
                 break;
-            case PowerUp.PW3:
-                break;
             case PowerUp.PW4:
+
                 break;
         }
     }

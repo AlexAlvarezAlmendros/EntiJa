@@ -7,6 +7,8 @@ public class PWSpawnerScript : MonoBehaviour
     public GameObject PowerUpPrefab;
     private PowerUpScript powerUpScript;
 
+    public GameObject Camara;
+
     public float maxDelay;
     public float minDelay;
 
@@ -36,37 +38,43 @@ public class PWSpawnerScript : MonoBehaviour
             {
                 GameObject powerSpawned = Instantiate(PowerUpPrefab, new Vector3(-5.5f, whereToSpawn, 1f), Quaternion.identity);
                 powerUpScript = powerSpawned.GetComponent<PowerUpScript>();
-                //powerUpScript.powerUpType = powerUpType.ChangeScene;
+                powerUpScript.powerUpType = PowerUp.Energy;
+                powerUpScript.Camara = this.Camara;
             }
             else if (whatToSpawn == 2)
             {
                 GameObject powerSpawned = Instantiate(PowerUpPrefab, new Vector3(-5.5f, whereToSpawn, 1f), Quaternion.identity);
                 powerUpScript = powerSpawned.GetComponent<PowerUpScript>();
-                //powerUpScript.powerUpType = powerUpType.Shield;
+                powerUpScript.powerUpType = PowerUp.Boost;
+                powerUpScript.Camara = this.Camara;
             }
             else if (whatToSpawn == 3)
             {
                 GameObject powerSpawned = Instantiate(PowerUpPrefab, new Vector3(-5.5f, whereToSpawn, 1f), Quaternion.identity);
                 powerUpScript = powerSpawned.GetComponent<PowerUpScript>();
-                //powerUpScript.powerUpType = powerUpType.PW3;
+                powerUpScript.powerUpType = PowerUp.Shield;
+                powerUpScript.Camara = this.Camara;
             }
             else if (whatToSpawn == 4)
             {
                 GameObject powerSpawned = Instantiate(PowerUpPrefab, new Vector3(-5.5f, whereToSpawn, 1f), Quaternion.identity);
                 powerUpScript = powerSpawned.GetComponent<PowerUpScript>();
-                //powerUpScript.powerUpType = powerUpType.PW4;
+                //powerUpScript.powerUpType = PowerUp.PW4;
+                //powerUpScript.Camara = this.Camara;
             }
             //else if (whereToSpawn == 5)
             //{
             //    GameObject powerSpawned = Instantiate(PowerUpPrefab, new Vector3(-5.5f, whereToSpawn, 1f), Quaternion.identity);
             //    powerUpScript = powerSpawned.GetComponent<PowerUpScript>();
-            //    //powerUpScript.powerUpType = powerUpType.;
+            //    //powerUpScript.powerUpType = PowerUp.;
+                  //powerUpScript.Camara = this.Camara;
             //}
             //else if (whatToSpawn == 6)
             //{
             //    GameObject powerSpawned = Instantiate(PowerUpPrefab, new Vector3(-5.5f, whereToSpawn, 1f), Quaternion.identity);
             //    powerUpScript = powerSpawned.GetComponent<PowerUpScript>();
-            //    //powerUpScript.powerUpType = powerUpType.;
+            //    //powerUpScript.powerUpType = PowerUp.;
+                  //powerUpScript.Camara = this.Camara;
             //}
 
             nextSpawn = Time.time + whenToSpawn;

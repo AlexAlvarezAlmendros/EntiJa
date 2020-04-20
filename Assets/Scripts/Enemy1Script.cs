@@ -21,7 +21,7 @@ public class Enemy1Script : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         JumpedID = Animator.StringToHash("Jumped");
-        enabled = false;
+        //enabled = false;
     }
 
     void FixedUpdate()
@@ -36,10 +36,10 @@ public class Enemy1Script : MonoBehaviour
             //cameraScript.auidoS.Play();
 
             this.transform.position = new Vector3(this.transform.position.x, -13, 0);
-            enabled = false; //DISABLE
+            //enabled = false; //DISABLE
 
         }
-        else if (this.transform.position.x <= Camara.transform.position.x -13)
+        else if (this.transform.position.x <= Camara.transform.position.x -100)
         {
             this.transform.position = new Vector3(this.transform.position.x, -15, 0);
             enabled = false; //DISABLE
