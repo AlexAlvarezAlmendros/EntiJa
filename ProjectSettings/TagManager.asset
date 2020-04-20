@@ -8,16 +8,6 @@ TagManager:
   - Enemy
   - Ground
   - PlayerAttack
-  layers:
-  - Default
-  - TransparentFX
-  - Ignore Raycast
-  - 
-  - Water
-  - UI
-  - 
-  - 
-  - 
   - 
   - 
   - 
@@ -56,4 +46,7 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 597744997
+    locked: 0
+  - name: Ground
+    uniqueID: 3050133781
     locked: 0

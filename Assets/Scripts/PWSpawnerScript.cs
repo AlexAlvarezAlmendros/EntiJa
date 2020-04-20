@@ -53,23 +53,11 @@ public class PWSpawnerScript : MonoBehaviour
                 powerUpScript = powerSpawned.GetComponent<PowerUpScript>();
                 powerUpScript.powerUpType = PowerUp.Shield;
             }
-            else if (whatToSpawn == 4)
-            {
-                GameObject powerSpawned = Instantiate(PowerUpPrefab, new Vector3(Camara.transform.position.x + 10f, whereToSpawn, 1f), Quaternion.identity);
-                powerUpScript = powerSpawned.GetComponent<PowerUpScript>();
-                //powerUpScript.powerUpType = PowerUp.PW4;
-            }
-            //else if (whereToSpawn == 5)
+            //else if (whatToSpawn == 4)
             //{
             //    GameObject powerSpawned = Instantiate(PowerUpPrefab, new Vector3(Camara.transform.position.x + 10f, whereToSpawn, 1f), Quaternion.identity);
             //    powerUpScript = powerSpawned.GetComponent<PowerUpScript>();
-            //    //powerUpScript.powerUpType = PowerUp.;
-            //}
-            //else if (whatToSpawn == 6)
-            //{
-            //    GameObject powerSpawned = Instantiate(PowerUpPrefab, new Vector3(Camara.transform.position.x + 10f, whereToSpawn, 1f), Quaternion.identity);
-            //    powerUpScript = powerSpawned.GetComponent<PowerUpScript>();
-            //    //powerUpScript.powerUpType = PowerUp.;
+            //    //powerUpScript.powerUpType = PowerUp.PW4;
             //}
 
             nextSpawn = Time.time + whenToSpawn;

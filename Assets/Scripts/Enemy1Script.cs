@@ -7,15 +7,16 @@ public class Enemy1Script : MonoBehaviour
     public GameObject Camara;
 
     public int EnemyHP = 1;
-    public float jumpStrengh = 1;
-    public float jumpLengh = 1;
+    public float movementSpeed;
+    public float jumpStrengh = 4;
+    public float jumpLengh = 4;
     public float minJumpDelay = 300f;
     public float maxJumpDelay = 600f;
     public float jumpDelay = 0;
     private float randomJump;
 
-    public float jumpTmp = 0;
-    public bool jumped = true;
+    private float jumpTmp = 0;
+    private bool jumped = true;
 
     private bool grounded;
     private int JumpedID;

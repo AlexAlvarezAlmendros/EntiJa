@@ -11,54 +11,52 @@ public class CarController : MonoBehaviour
     private float groundFriction = 70;
     private float jumpForce = 4;
     
-    private bool isjumping = false;
-
     private Animator anim;
     private Vector2 velocity;
-    private BoxCollider2D boxCollider;
-    private Rigidbody2D Man;
-    private bool grounded;
+    private BoxCollider2D collider;
+    private Rigidbody2D rig;
     public GameObject cam;
 
     public GameObject laser;
-    
+
+    private int GroundingID;
+    private int JumpedID;
+    private int FlyingID;
 
     void Start()
     {
-        GameController.Instance.setEnergy(50);
+        GameController.Instance.setEnergy(30);
         transform.position = new Vector3(-4.44f, -3.16f, 0f);
         anim = GetComponent<Animator>();
-        boxCollider = GetComponent<BoxCollider2D>();
+        collider = GetComponent<BoxCollider2D>();
 
-        Man = GetComponent<Rigidbody2D>();
-        GameObject gameControllerObject =
-            GameObject.FindWithTag("GameController");
-        
+        GroundingID = Animator.StringToHash("Grounding");
+        JumpedID = Animator.StringToHash("Jumped");
+        FlyingID = Animator.StringToHash("Flying");
+
+        rig = GetComponent<Rigidbody2D>();
+        GameObject gameControllerObject = GameObject.FindWithTag("GameController");
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
+        bool isGrounding = animator.GetBool(GroundingID);
+        bool hasJumped = animator.GetBool(JumpedID);
+        bool isFlying = animator.GetBool(FlyingID);
+
         if (transform.position.x < cam.transform.position.x - 3.65f)
         {
             transform.position = new Vector3(cam.transform.position.x - 3.65f, transform.position.y, transform.position.z);
         }
-        if (grounded)
+
+        if (isGrounding && Input.GetButtonDown("Jump"))
         {
-            velocity.y = 0;
-            
-            if (Input.GetButtonDown("Jump"))
-            {
-               Man.AddForce(jumpForce * transform.up, ForceMode2D.Impulse);
-                isjumping = true;
-            }
-            else
-            {
-                isjumping = false;
-            }
+            rig.AddForce(jumpForce * transform.up, ForceMode2D.Impulse);
         }
+
         if (Input.GetMouseButtonDown(1))
         {
-            ShootLaser();
+
         }
         
         float moveInput = Input.GetAxisRaw("Horizontal");
@@ -74,65 +72,32 @@ public class CarController : MonoBehaviour
         transform.Translate(velocity * Time.deltaTime);
 
         float energy = GameController.Instance.getEnergy();
-        if (isjumping && !grounded && energy > 0)
-        {
-            if (Input.GetButtonDown("Jump"))
-            {
-                velocity.y = Mathf.Sqrt(2 * 0);
-            }
-        }
-
-        //Collider2D[] hits = Physics2D.OverlapBoxAll(transform.position, boxCollider.size, 0);
-        //grounded = false;
-        //foreach (Collider2D hit in hits)
-        //{
-        //    if (hit == boxCollider)
-        //        continue;
-
-        //    ColliderDistance2D colliderDistance = hit.Distance(boxCollider);
-        //    if (colliderDistance.isOverlapped)
-        //    {
-                
-        //        transform.Translate(colliderDistance.pointA - colliderDistance.pointB);
-        //    }
-        //    if (Vector2.Angle(colliderDistance.normal, Vector2.up) < 90 && velocity.y < 0)
-        //    {
-        //        grounded = true;
-        //    }
-        //}
     }
 
-    void FixedUpdate()
+    void OnTriggerEnter2D(Collider2D coll)
     {
-
-
-    }
-
-    void OnTriggerEnter2D(Collider2D c)
-    {
-        if (c.gameObject.tag.Equals("Enemy"))
+        if (coll.gameObject.tag.Equals("Enemy"))
         {
-            SceneManager.LoadScene("GameOver");
+            GameController.Instance.lives--;
         }
-        if (c.gameObject.tag.Equals("Energy"))
+        if (coll.gameObject.tag.Equals("Energy"))
         {
             GameController.Instance.setEnergy(20);
         }
-        if (c.gameObject.tag.Equals("Ground"))
-        {
-            ColliderDistance2D colliderDistance = c.Distance(c);
-            if (colliderDistance.isOverlapped)
-            {
-
-                transform.Translate(colliderDistance.pointA - colliderDistance.pointB);
-            }
-        }
 
     }
-    void ShootLaser()
+    void OnCollisionEnter2D(Collision2D coll)
     {
-        Instantiate(laser,
-        new Vector3(transform.position.x + 1, transform.position.y, 0),
-        transform.rotation);
+        if (coll.gameObject.tag.Equals("Ground"))
+        {
+            animator.SetBool(GroundingID, true);
+        }
+    }
+    void OnCollisionExit2D(Collision2D coll)
+    {
+        if (coll.gameObject.tag.Equals("Ground"))
+        {
+            animator.SetBool(GroundingID, false);
+        }
     }
 }
