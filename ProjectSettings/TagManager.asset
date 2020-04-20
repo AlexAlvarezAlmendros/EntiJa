@@ -6,6 +6,11 @@ TagManager:
   tags:
   - PowerUp
   - Enemy
+  - Ground
+<<<<<<< HEAD
+=======
+  - PlayerAttack
+>>>>>>> 097e6ebec8edcbffb1754e44fd37a7fd37b459ff
   layers:
   - Default
   - TransparentFX
@@ -15,7 +20,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - platform
   - 
   - 
   - 
@@ -54,4 +59,7 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 597744997
+    locked: 0
+  - name: Ground
+    uniqueID: 3050133781
     locked: 0

@@ -9,13 +9,15 @@ public class Enemy1Script : MonoBehaviour
     public int EnemyHP = 1;
     public float jumpStrengh = 1;
     public float jumpLengh = 1;
-    public float jumpDelay = 1000;
+    public float minJumpDelay = 300f;
+    public float maxJumpDelay = 600f;
+    public float jumpDelay = 0;
+    private float randomJump;
+
     public float jumpTmp = 0;
     public bool jumped = true;
 
-    private Vector2 velocity;
     private bool grounded;
-    private bool isjumping = false;
     private int JumpedID;
 
     private Rigidbody2D rigidBody;
@@ -30,32 +32,15 @@ public class Enemy1Script : MonoBehaviour
 
         Camara = GameObject.FindWithTag("MainCamera");
         JumpedID = Animator.StringToHash("Jumped");
+
+        randomJump = Random.Range(minJumpDelay, maxJumpDelay);
+        jumpDelay = randomJump;
     }
 
     void FixedUpdate()
     {
         float delta = Time.deltaTime * 1000;
         float deltasmall = Time.deltaTime * 100;
-
-        if (grounded)
-        {
-            velocity.y = 0;
-
-            if (jumped == false)
-            {
-                rigidBody.AddForce(Vector2.right * -jumpLengh * deltasmall, ForceMode2D.Impulse);
-                rigidBody.AddForce(Vector2.up * jumpStrengh * deltasmall, ForceMode2D.Impulse);
-                jumped = true;
-                isjumping = true;
-            }
-            else
-            {
-                isjumping = false;
-            }
-        }
-        velocity.y += Physics2D.gravity.y * Time.deltaTime;
-
-        velocity.x = velocity.x - 20;
 
         if (EnemyHP <= 0)
         {
@@ -66,34 +51,38 @@ public class Enemy1Script : MonoBehaviour
 
             Destroy(gameObject); //DESTROY
         }
-        //else if (this.transform.position.x <= Camara.transform.position.x - 10 ||
-        //this.transform.position.y <= Camara.transform.position.y - 10) 
-        //     {
-        //        Destroy(gameObject); //DESTROY
-        //     }
-
-        Collider2D[] hits = Physics2D.OverlapBoxAll(transform.position, boxCollider.size, 0);
-        grounded = false;
-        foreach (Collider2D hit in hits)
+        else if (this.transform.position.x <= Camara.transform.position.x - 10 ||
+        this.transform.position.y <= Camara.transform.position.y - 10)
         {
-            if (hit == boxCollider)
-                continue;
-
-            ColliderDistance2D colliderDistance = hit.Distance(boxCollider);
-            if (colliderDistance.isOverlapped)
-            {
-
-                transform.Translate(colliderDistance.pointA - colliderDistance.pointB);
-            }
-            if (Vector2.Angle(colliderDistance.normal, Vector2.up) < 90 && velocity.y < 0)
-            {
-                grounded = true;
-            }
+            Destroy(gameObject); //DESTROY
         }
 
-        if (jumped == true && jumpTmp <= jumpDelay) { jumpTmp += delta; }
-        else if (jumpTmp >= jumpDelay) { jumped = false; jumpTmp = 0; }
+        if (jumped == false && grounded == true)
+        {
+            rigidBody.AddForce(Vector2.right * -jumpLengh * deltasmall, ForceMode2D.Impulse);
+            rigidBody.AddForce(Vector2.up * jumpStrengh * deltasmall, ForceMode2D.Impulse);
+            jumped = true;
+        }
+
+        if (jumped == true && jumpTmp <= jumpDelay && grounded == true) { jumpTmp += delta; }
+        else if (jumpTmp >= jumpDelay) {
+            jumped = false;
+            randomJump = Random.Range(minJumpDelay, maxJumpDelay);
+            jumpDelay = randomJump;
+        }
     }
-
-
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        if (coll.gameObject.tag.Equals("Ground"))
+        {
+            grounded = true;
+        }
+    }
+    void OnCollisionExit2D(Collision2D coll)
+    {
+        if (coll.gameObject.tag.Equals("Ground"))
+        {
+            grounded = false;
+        }
+    }
 }

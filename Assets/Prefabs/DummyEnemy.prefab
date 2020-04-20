@@ -98,9 +98,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Camara: {fileID: 0}
   EnemyHP: 1
-  jumpStrengh: 10
-  jumpLengh: 5
-  jumpDelay: 1000
+  jumpStrengh: 4
+  jumpLengh: 4
+  minJumpDelay: 300
+  maxJumpDelay: 600
+  jumpDelay: 500
   jumpTmp: 0
   jumped: 1
 --- !u!61 &7756338486808616915
@@ -113,7 +115,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -149,4 +151,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
