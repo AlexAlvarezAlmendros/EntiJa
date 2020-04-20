@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class ShipController : MonoBehaviour
+public class CarController : MonoBehaviour
 {
 
     private float speed = 5;
@@ -29,7 +29,7 @@ public class ShipController : MonoBehaviour
 
     void Start()
     {
-        transform.position = new Vector3(-5.65f, -3.526f, 0f);
+        transform.position = new Vector3(-4.44f, -3.16f, 0f);
         anim = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
 
@@ -51,21 +51,17 @@ public class ShipController : MonoBehaviour
             
             if (Input.GetButtonDown("Jump"))
             {
-                anim.SetBool("isRunning", false);
                 velocity.y = Mathf.Sqrt(2 * jumpForce * Mathf.Abs(Physics2D.gravity.y));
-                anim.SetBool("isjumping", true);
                 isjumping = true;
             }
             else
             {
                 isjumping = false;
-                anim.SetBool("isjumping", false);
             }
         }
         if (Input.GetMouseButtonDown(1))
         {
             ShootLaser(right);
-            anim.SetTrigger("Shoot"); ;
         }
 
         velocity.y += Physics2D.gravity.y * Time.deltaTime;
@@ -75,18 +71,15 @@ public class ShipController : MonoBehaviour
             velocity.x = Mathf.MoveTowards(velocity.x, speed * moveInput, walkAcceleration * Time.deltaTime);
             if (isjumping)
             {
-                anim.SetBool("isRunning", false);
             }
             else
             {
-                anim.SetBool("isRunning", true);
             }
             
         }
         else
         {
             velocity.x = Mathf.MoveTowards(velocity.x, 0, groundFriction * Time.deltaTime);
-            anim.SetBool("isRunning", false);
         }
         if (moveInput > 0 && !facingRight)
         {
