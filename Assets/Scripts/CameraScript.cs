@@ -30,11 +30,11 @@ public class CameraScript : MonoBehaviour
         }
 
         //MOVEMENT / TP PLAYER
-        if (Player.transform.position.x <= this.transform.position.x -1)
+        if (Player.transform.position.x <= this.transform.position.x -6)
         {
             Player.transform.position = new Vector3(Player.transform.position.y, this.transform.position.x - 1,0);
         }
-        else if (Player.transform.position.x >= this.transform.position.x + 1)
+        else if (Player.transform.position.x >= this.transform.position.x + 6)
         {
             Player.transform.position = new Vector3(Player.transform.position.y, this.transform.position.x + 1, 0);
         }
