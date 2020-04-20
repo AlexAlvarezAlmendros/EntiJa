@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy1Script : MonoBehaviour
 {
+    public GameObject Camara;
+
     public int EnemyHP = 1;
     public float jumpStrengh = 100;
     public float jumpDelay = 1000;
@@ -13,13 +15,11 @@ public class Enemy1Script : MonoBehaviour
 
     private Rigidbody2D rigidBody;
     private Animator animator;
-    private SpriteRenderer renderer;
 
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        renderer = GetComponent<SpriteRenderer>();
         JumpedID = Animator.StringToHash("Jumped");
         enabled = false;
     }
@@ -28,15 +28,22 @@ public class Enemy1Script : MonoBehaviour
     {
         float delta = Time.deltaTime * 1000;
 
-        //if (EnemyHP == 0)
-        //{
-        //    GameManager.Instance.score += 100;
-        //    cameraScript = CameraController.GetComponent<CameraControl>();
-        //    cameraScript.auidoS.clip = SoundManager.Instance.Enemy2Death;
-        //    cameraScript.auidoS.Play();
+        if (EnemyHP == 0)
+        {
+            GameController.Instance.hiscore += 100;
+            //cameraScript = CameraController.GetComponent<CameraControl>();
+            //cameraScript.auidoS.clip = SoundManager.Instance.Enemy2Death;
+            //cameraScript.auidoS.Play();
 
-        //    //Destroy(gameObject); //DESTROY
-        //}
+            this.transform.position = new Vector3(this.transform.position.x, -13, 0);
+            enabled = false; //DISABLE
+
+        }
+        else if (this.transform.position.x <= Camara.transform.position.x -13)
+        {
+            this.transform.position = new Vector3(this.transform.position.x, -15, 0);
+            enabled = false; //DISABLE
+        }
 
         if (jumped == true && jumpTmp < jumpDelay) { jumpTmp += delta; }
         else if (jumpTmp >= jumpDelay) { jumped = false; jumpTmp = 0; }
@@ -48,4 +55,6 @@ public class Enemy1Script : MonoBehaviour
             jumped = true;
         }
     }
+
+
 }
