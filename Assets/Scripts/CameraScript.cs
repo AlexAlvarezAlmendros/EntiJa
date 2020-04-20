@@ -5,7 +5,6 @@ using UnityEngine;
 public class CameraScript : MonoBehaviour
 {
     public GameObject Player;
-    public GameObject LeftTrigger;
     public float moveSpeed;
 
     void FixedUpdate()
@@ -30,10 +29,14 @@ public class CameraScript : MonoBehaviour
             transform.position = new Vector3(transform.position.x, Player.transform.position.y + 290, 0);
         }
 
-        //MOVEMENT
-        if (Player.transform.position.x <= LeftTrigger.transform.position.x)
+        //MOVEMENT / TP PLAYER
+        if (Player.transform.position.x <= this.transform.position.x -1)
         {
-            this.transform.position = new Vector3(transform.position.x + moveSpeed, transform.position.y, 0);
+            Player.transform.position.x = this.transform.position.x - 1;
+        }
+        else if (Player.transform.position.x >= this.transform.position.x + 1)
+        {
+            Player.transform.position.x = this.transform.position.x + 1;
         }
     }
 }
