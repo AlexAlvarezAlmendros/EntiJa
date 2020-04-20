@@ -20,7 +20,6 @@ public class CarController : MonoBehaviour
     private Animator anim;
     private Vector2 velocity;
     private BoxCollider2D boxCollider;
-    private GameController gameController;
     private Rigidbody2D Man;
     private bool grounded;
     
@@ -36,9 +35,7 @@ public class CarController : MonoBehaviour
         Man = GetComponent<Rigidbody2D>();
         GameObject gameControllerObject =
             GameObject.FindWithTag("GameController");
-
-        gameController =
-            gameControllerObject.GetComponent<GameController>();
+        
 
         
     }
