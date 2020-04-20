@@ -4,45 +4,47 @@ using UnityEngine;
 
 public class Enemy2Script : MonoBehaviour
 {
-    public GameObject Camara;
+    public GameObject startPoint;
+    public GameObject endPoint;
+    public float enemySpeed;
 
-    public int EnemyHP = 1;
-    public float movementSpeed;
-    public float maxZigZag;
-    private float maxZigZagTmp;
+    private bool isGoingRight;
+    private int damage = 0;
 
-    private Rigidbody2D rigidBody;
-    private Animator animator;
-    private BoxCollider2D boxCollider;
-
+    // Start is called before the first frame update
     void Start()
     {
-        rigidBody = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
-        boxCollider = GetComponent<BoxCollider2D>();
-
-        Camara = GameObject.FindWithTag("MainCamera");
+        if(!isGoingRight)
+        {
+            transform.position = startPoint.transform.position;
+        }
+        else
+        {
+            transform.position = endPoint.transform.position;
+        }
     }
 
-    void FixedUpdate()
+    // Update is called once per frame
+    void Update()
     {
-        float delta = Time.deltaTime * 1000;
-        float deltasmall = Time.deltaTime * 100;
-
-        if (EnemyHP <= 0)
+        if(!isGoingRight)
         {
-            GameController.Instance.hiscore += 100;
-            //cameraScript = CameraController.GetComponent<CameraControl>();
-            //cameraScript.auidoS.clip = SoundManager.Instance.Enemy2Death;
-            //cameraScript.auidoS.Play();
-
-            Destroy(gameObject); //DESTROY
+            transform.position = Vector3.MoveTowards(transform.position, endPoint.transform.position, enemySpeed * Time.deltaTime);
+            if(transform.position == endPoint.transform.position)
+            {
+                isGoingRight = true;
+            }
+            
         }
-        else if (this.transform.position.x <= Camara.transform.position.x - 10 ||
-        this.transform.position.y <= Camara.transform.position.y - 10)
+
+        if(isGoingRight)
         {
-            Destroy(gameObject); //DESTROY
+            transform.position = Vector3.MoveTowards(transform.position, startPoint.transform.position, enemySpeed * Time.deltaTime);
+            if(transform.position == startPoint.transform.position)
+            {
+                isGoingRight = false;
+            }
+            
         }
     }
-    
 }

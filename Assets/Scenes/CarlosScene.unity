@@ -2602,6 +2602,12 @@ PrefabInstance:
       propertyPath: Camara
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8215612645767416423, guid: a1ebcba6c8d2afa4bb4559b5f6a5f56c,
+        type: 3}
+      propertyPath: Enemy2Prefab
+      value: 
+      objectReference: {fileID: 8097326279411829050, guid: 16e9578eb35ddc148a9a774c0b6aa852,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 2151188764573482441, guid: a1ebcba6c8d2afa4bb4559b5f6a5f56c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a1ebcba6c8d2afa4bb4559b5f6a5f56c, type: 3}

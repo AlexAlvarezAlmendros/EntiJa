@@ -29,7 +29,7 @@ public class ENSpawnerScript : MonoBehaviour
     {
         if (Time.time > nextSpawn) // if time has come
         {
-            whatToSpawn = Random.Range(1, 2); //define random value between 1 and 4 (5 is ecluded)
+            whatToSpawn = Random.Range(1, 3); //define random value between 1 and 4 (5 is ecluded)
 
             //whereToSpawn = Random.Range(0, 5); // define random value between 0 and 4 (5 is excluded)
 
@@ -41,9 +41,8 @@ public class ENSpawnerScript : MonoBehaviour
             }
             else if (whatToSpawn == 2)
             {
-                GameObject enemySpawned = Instantiate(Enemy2Prefab, new Vector3(-5.5f, whereToSpawn, 1f), Quaternion.identity);
+                GameObject enemySpawned = Instantiate(Enemy2Prefab, new Vector3(Camara.transform.position.x + 10f, Camara.transform.position.y + 2f, 1f), Quaternion.identity);            
             }
-
             nextSpawn = Time.time + whenToSpawn;
         }
     }
