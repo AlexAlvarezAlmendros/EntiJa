@@ -14,7 +14,8 @@ public class CameraScript : MonoBehaviour
     }
     private void Update()
     {
-        transform.position = new Vector3(transform.position.x + actualMoveSpeed, transform.position.y, transform.position.z);
+        float delta = Time.deltaTime * 1000;
+        transform.position = new Vector3(transform.position.x + delta * Time.deltaTime, transform.position.y, transform.position.z);
     }
     void FixedUpdate()
     {

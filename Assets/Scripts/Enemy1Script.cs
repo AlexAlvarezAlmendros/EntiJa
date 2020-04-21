@@ -8,8 +8,8 @@ public class Enemy1Script : MonoBehaviour
 
     public int EnemyHP = 1;
     public float movementSpeed;
-    public float jumpStrengh = 4;
-    public float jumpLengh = 4;
+    public float jumpStrengh = 2;
+    public float jumpLengh = 2;
     public float minJumpDelay = 300f;
     public float maxJumpDelay = 600f;
     public float jumpDelay = 0;

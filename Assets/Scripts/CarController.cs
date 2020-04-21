@@ -87,6 +87,8 @@ public class CarController : MonoBehaviour
             //DEATH ANIMATION
             GameController.instance.GameON = false;
             GameController.instance.lives = 1;
+            FindObjectOfType<AudioManager>().Stop("Fly");
+            FindObjectOfType<AudioManager>().Stop("GameMusic");
             SceneManager.LoadScene("GameOver");
         }
 
