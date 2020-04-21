@@ -193,7 +193,6 @@ public class CarController : MonoBehaviour
 
             if (isShielded)
             {
-                Debug.Log("No more Shield");
                 ShieldOverlay.SetBool(ShieldID, false);
             }
         }
