@@ -40,9 +40,15 @@ public class Enemy1Script : MonoBehaviour
 
     void FixedUpdate()
     {
+        
         float delta = Time.deltaTime * 1000;
         float deltasmall = Time.deltaTime * 100;
-
+        if (this.transform.position.y <= Camara.transform.position.y - 4)
+        {
+            rigidBody.AddForce(Vector2.right * -jumpLengh * deltasmall, ForceMode2D.Impulse);
+            rigidBody.AddForce(Vector2.up * jumpStrengh * deltasmall, ForceMode2D.Impulse);
+            jumped = true;
+        }
         if (EnemyHP <= 0)
         {
             GameController.Instance.hiscore += 100;
