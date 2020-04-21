@@ -47,9 +47,9 @@ MonoBehaviour:
     type: 3}
   Enemy2Prefab: {fileID: 7345785692753216666, guid: 67eaa9005f065594c84be0e2b85820a3,
     type: 3}
-  maxDelay: 20
+  maxDelay: 10
   minDelay: 5
-  FirstSpawn: 0
+  FirstSpawn: 2
   whatToSpawn: 0
   whereToSpawn: 0
   whenToSpawn: 0
