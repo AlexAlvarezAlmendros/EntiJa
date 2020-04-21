@@ -40,7 +40,7 @@ public class WeaponScript : MonoBehaviour
         }
         RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.position, firePoint.right, 30);
         StartLaserAnim();
-        GameObject clone = (GameObject)Instantiate(laser, new Vector3(firePoint.position.x + 5, firePoint.position.y - 0.57f, firePoint.position.z), Quaternion.identity, player.transform);
+        GameObject clone = (GameObject)Instantiate(laser, new Vector3(firePoint.position.x + 10.3f, firePoint.position.y - 0.47f , firePoint.position.z), Quaternion.identity, player.transform);
         Destroy(clone, 1.0f);
         if (hitInfo)
         {

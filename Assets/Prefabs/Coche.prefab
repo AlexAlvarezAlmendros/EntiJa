@@ -136,8 +136,11 @@ MonoBehaviour:
   fuelConsumedXSec: 0.1
   flyDelay: 4
   invulnerableDelay: 0
-  boosted: 0
+  invulnerableTime: 0
   boostDelay: 0
+  boosted: 0
+  slider: {fileID: 0}
+  animator: {fileID: 0}
   cam: {fileID: 0}
   explosion: {fileID: 7287646316310371301, guid: fce7479a3857fb347871c37eb2779f6a,
     type: 3}
@@ -154,6 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22a34497401f61a4fafea5cce69ce7e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  car: {fileID: 1085646699181580673}
   firePoint: {fileID: 1085646698466340541}
   laser: {fileID: 3895480496740709903, guid: 4307d177e88483c4db2376ceef24dace, type: 3}
   exlosion: {fileID: 7287646316310371301, guid: fce7479a3857fb347871c37eb2779f6a,
