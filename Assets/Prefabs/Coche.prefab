@@ -42,10 +42,10 @@ GameObject:
   - component: {fileID: 1085646699181580675}
   - component: {fileID: 1085646699181580673}
   - component: {fileID: 1085646699181580679}
-  - component: {fileID: 1085646699181580678}
   - component: {fileID: 1085646699181580677}
-  - component: {fileID: 1085646699181580676}
+  - component: {fileID: 1085646699181580678}
   - component: {fileID: 7003597942810481582}
+  - component: {fileID: 1085646699181580676}
   m_Layer: 0
   m_Name: Coche
   m_TagString: Player
@@ -160,6 +160,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &1085646699181580677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085646699181580674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22a34497401f61a4fafea5cce69ce7e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePoint: {fileID: 1085646698466340541}
+  laser: {fileID: 3895480496740709903, guid: 4307d177e88483c4db2376ceef24dace, type: 3}
+  exlosion: {fileID: 0}
+  shootDelay: 2
 --- !u!61 &1085646699181580678
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -186,41 +202,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.4053302, y: 1.8961029}
   m_EdgeRadius: 0
---- !u!114 &1085646699181580677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1085646699181580674}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22a34497401f61a4fafea5cce69ce7e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firePoint: {fileID: 1085646698466340541}
-  laser: {fileID: 3895480496740709903, guid: 4307d177e88483c4db2376ceef24dace, type: 3}
-  exlosion: {fileID: 0}
-  shootDelay: 2
---- !u!95 &1085646699181580676
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1085646699181580674}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a7171af740037e4498e835c8a2af69bd, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!61 &7003597942810481582
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -247,3 +228,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.8984547, y: 0.96363497}
   m_EdgeRadius: 0
+--- !u!95 &1085646699181580676
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085646699181580674}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a7171af740037e4498e835c8a2af69bd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
