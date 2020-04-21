@@ -137,8 +137,8 @@ public class CarController : MonoBehaviour
             switch (powerUpScript.powerUpType)
             {
                 case PowerUp.Energy:
-                    if (GameController.Instance.energy + 20 > 100) { GameController.Instance.giveEnergy(100 - GameController.Instance.energy); }
-                    else { GameController.Instance.giveEnergy(20); }
+                    if (GameController.instance.energy + 20 > 100) { GameController.instance.giveEnergy(100 - GameController.instance.energy); }
+                    else { GameController.instance.giveEnergy(20); }
                     break;
                 case PowerUp.Boost:
                     boosted = true;
