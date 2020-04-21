@@ -92,6 +92,10 @@ public class CarController : MonoBehaviour
         else { boosted = false; boostTmp = 0; }
 
         float energy = GameController.Instance.getEnergy();
+        if (!isGrounding)
+        {
+            FindObjectOfType<AudioManager>().Play("Fly");
+        }
     }
     private void FixedUpdate()
     {
