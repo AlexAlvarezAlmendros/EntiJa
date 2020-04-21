@@ -28,9 +28,6 @@ public class PowerUpScript : MonoBehaviour
             case PowerUp.Shield:
 
                 break;
-            case PowerUp.PW4:
-
-                break;
         }
     }
 
@@ -38,9 +35,7 @@ public class PowerUpScript : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            //GameManager.Instance.HP++;
-            //Destroy(collision.gameObject);
-            //GameManager.Instance.score += 100;
+            Destroy(gameObject);
         }
     }
 }
