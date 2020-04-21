@@ -10,11 +10,11 @@ public class SceneManagerScript : MonoBehaviour
         {
             case "MainMenu":
                 SceneManager.LoadScene(scName);
-                FindObjectOfType<AudioManager>().Play("MenuMusic");
                 break;
             case "Game":
-                SceneManager.LoadScene(scName);
+                FindObjectOfType<AudioManager>().Stop("MenuMusic");
                 FindObjectOfType<AudioManager>().Play("GameMusic");
+                SceneManager.LoadScene(scName);
                 break;
             default:
                 SceneManager.LoadScene(scName);
