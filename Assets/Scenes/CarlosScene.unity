@@ -1285,6 +1285,8 @@ MonoBehaviour:
   slider: {fileID: 1704187478}
   lives: 3
   hiscore: 0
+  record: 0
+  energy: 0
 --- !u!4 &841022296
 Transform:
   m_ObjectHideFlags: 0
@@ -2664,6 +2666,11 @@ PrefabInstance:
         type: 3}
       propertyPath: shootDelay
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611838645136749422, guid: 4077c596088a6b54bb9a7fda705725aa,
+        type: 3}
+      propertyPath: fuelConsumedXSec
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1611838645136749423, guid: 4077c596088a6b54bb9a7fda705725aa,
         type: 3}

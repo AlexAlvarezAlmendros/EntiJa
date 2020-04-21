@@ -6,10 +6,17 @@ using UnityEngine.SceneManagement;
 
 public class CarController : MonoBehaviour
 {
-    private float speed = 5;
-    private float walkAcceleration = 75;
-    private float groundFriction = 70;
-    private float jumpForce = 4;
+    bool isDead = false;
+
+    private float speed = 5f;
+    private float walkAcceleration = 75f;
+    private float groundFriction = 70f;
+    public float jumpForce = 4f;
+    public float flyForce = 1f;
+    public float fuelConsumedXSec = 1f;
+    public float flyDelay = 4f;
+    public float flyTmp = 0f;
+    public bool canFly = false;
 
     private Animator animator;
     private Vector2 velocity;
@@ -19,8 +26,6 @@ public class CarController : MonoBehaviour
 
     public GameObject laser;
     public Animator laserAnimator;
-    private bool canShoot = true;
-    public int shootDelay;
 
     private int GroundingID;
     private int JumpedID;
@@ -44,22 +49,29 @@ public class CarController : MonoBehaviour
     }
     private void Update()
     {
+        if (GameController.Instance.lives <= 0)
+        {
+            isDead = true;
+            //DEATH ANIMATION
+        }
+
         bool isGrounding = animator.GetBool(GroundingID);
-        if (isGrounding && Input.GetButtonDown("Jump"))
+        if (isGrounding && Input.GetKey(KeyCode.Space)) //JUMP
         {
-            rig.AddForce(jumpForce * transform.up, ForceMode2D.Impulse);
+            rig.AddForce(jumpForce * transform.up, ForceMode2D.Impulse); 
         }
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && GameController.Instance.energy > 0 && canFly == true) //FLY
         {
-            rig.velocity = Vector2.up * jumpForce;
+            GameController.Instance.useEnergy(fuelConsumedXSec);
+            rig.velocity = Vector2.up * flyForce;
         }
-
-        if (Input.GetButtonDown("Fire1") && canShoot)
+        if (flyTmp >= flyDelay) { canFly = true; flyTmp = 0; }
+        else if (!isGrounding && canFly == false)
         {
-            animator.SetTrigger("Shoot");
-            Debug.Log("click");
-
+            flyTmp += Time.deltaTime * 10;
         }
+        else if (isGrounding) { canFly = false; }
+        
         float energy = GameController.Instance.getEnergy();
     }
     private void FixedUpdate()
@@ -82,18 +94,6 @@ public class CarController : MonoBehaviour
         }
 
         transform.Translate(velocity * Time.deltaTime);
-    }
-
-    public void StartLaserAnim()
-    {
-        laserAnimator.SetTrigger("LaserShot");
-        canShoot = false;
-    }
-
-    IEnumerator WaitToShoot()
-    {
-        yield return new WaitForSecondsRealtime(2);
-        canShoot = true;
     }
 
     void OnTriggerEnter2D(Collider2D coll)

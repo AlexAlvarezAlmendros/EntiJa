@@ -10,7 +10,8 @@ public class GameController : MonoBehaviour
     public Slider slider;
     public int lives;
     public int hiscore;
-    private float energy;
+    public int record;
+    public float energy;
     public static GameController Instance { get; private set; }
     
 
@@ -53,6 +54,11 @@ public class GameController : MonoBehaviour
     public void setEnergy(float _energy)
     {
         energy = energy + _energy;
+        slider.value = energy;
+    }
+    public void useEnergy(float _energy)
+    {
+        energy = energy - _energy;
         slider.value = energy;
     }
     public float getEnergy()
