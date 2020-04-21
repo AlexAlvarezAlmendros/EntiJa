@@ -47,4 +47,8 @@ public class Enemy2Script : MonoBehaviour
             
         }
     }
+    public void takeDamage(int _damage)
+    {
+        damage = damage - _damage;
+    }
 }

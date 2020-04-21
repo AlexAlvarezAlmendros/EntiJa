@@ -51,7 +51,7 @@ public class GameController : MonoBehaviour
     {
 
     }
-    public void setEnergy(float _energy)
+    public void giveEnergy(float _energy)
     {
         energy = energy + _energy;
         slider.value = energy;

@@ -99,8 +99,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
-  laser: {fileID: 1611838646240750822}
-  laserAnimator: {fileID: 1611838646240750816}
 --- !u!50 &1611838645136749416
 Rigidbody2D:
   serializedVersion: 4

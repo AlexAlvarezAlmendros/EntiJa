@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class CarController : MonoBehaviour
 {
-    bool isDead = false;
-
     private float speed = 5f;
     private float walkAcceleration = 75f;
     private float groundFriction = 70f;
@@ -15,8 +13,18 @@ public class CarController : MonoBehaviour
     public float flyForce = 1f;
     public float fuelConsumedXSec = 1f;
     public float flyDelay = 4f;
-    public float flyTmp = 0f;
-    public bool canFly = false;
+    private float flyTmp = 0f;
+    private bool canFly = false;
+
+    private bool invulnerableTime = false;
+    public float invulnerableDelay;
+    private float invulnetableTmp;
+
+    private bool boosted = false;
+    public float boostDelay;
+    private float boostTmp;
+
+    private PowerUpScript powerUpScript;
 
     private Animator animator;
     private Vector2 velocity;
@@ -24,25 +32,23 @@ public class CarController : MonoBehaviour
     private Rigidbody2D rig;
     public GameObject cam;
 
-    public GameObject laser;
-    public Animator laserAnimator;
-
     private int GroundingID;
     private int JumpedID;
     private int FlyingID;
-    private int LaserShotID;
+    private int isDeadID;
 
     void Start()
     {
-        GameController.Instance.setEnergy(30);
+        GameController.Instance.giveEnergy(30);
         transform.position = new Vector3(-4.44f, -3.16f, 0f);
         animator = GetComponent<Animator>();
         collider = GetComponent<BoxCollider2D>();
-        laserAnimator = laser.GetComponent<Animator>();
+        
 
         GroundingID = Animator.StringToHash("Grounding");
         JumpedID = Animator.StringToHash("Jumped");
         FlyingID = Animator.StringToHash("Flying");
+        isDeadID = Animator.StringToHash("isDead");
 
         rig = GetComponent<Rigidbody2D>();
         GameObject gameControllerObject = GameObject.FindWithTag("GameController");
@@ -51,7 +57,7 @@ public class CarController : MonoBehaviour
     {
         if (GameController.Instance.lives <= 0)
         {
-            isDead = true;
+            animator.SetBool(isDeadID, true);
             //DEATH ANIMATION
         }
 
@@ -62,7 +68,7 @@ public class CarController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Space) && GameController.Instance.energy > 0 && canFly == true) //FLY
         {
-            GameController.Instance.useEnergy(fuelConsumedXSec);
+            if (boosted == false) { GameController.Instance.useEnergy(fuelConsumedXSec); }
             rig.velocity = Vector2.up * flyForce;
         }
         if (flyTmp >= flyDelay) { canFly = true; flyTmp = 0; }
@@ -71,7 +77,19 @@ public class CarController : MonoBehaviour
             flyTmp += Time.deltaTime * 10;
         }
         else if (isGrounding) { canFly = false; }
-        
+
+        if (invulnerableTime == true && invulnetableTmp <= invulnerableDelay)
+        {
+            invulnetableTmp += Time.deltaTime * 10;
+        }
+        else { invulnerableTime = false; invulnetableTmp = 0; }
+
+        if (boosted == true && boostTmp <= boostDelay)
+        {
+            boostTmp += Time.deltaTime * 10;
+        }
+        else { boosted = false; boostTmp = 0; }
+
         float energy = GameController.Instance.getEnergy();
     }
     private void FixedUpdate()
@@ -101,10 +119,23 @@ public class CarController : MonoBehaviour
         if (coll.gameObject.tag.Equals("Enemy"))
         {
             GameController.Instance.lives--;
+            invulnerableTime = true;
         }
-        if (coll.gameObject.tag.Equals("Energy"))
+        if (coll.gameObject.tag.Equals("PowerUp"))
         {
-            GameController.Instance.setEnergy(20);
+            powerUpScript = coll.GetComponent<PowerUpScript>();
+            switch (powerUpScript.powerUpType)
+            {
+                case PowerUp.Energy:
+                    GameController.Instance.giveEnergy(20);
+                    break;
+                case PowerUp.Boost:
+                    boosted = true;
+                    break;
+                case PowerUp.Shield:
+                    GameController.Instance.lives = 2;
+                    break;
+            }
         }
 
     }
