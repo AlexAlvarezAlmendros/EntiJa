@@ -66,7 +66,6 @@ public class GameController : MonoBehaviour
 
     public void SetSlider()
     {
-        Debug.Log("Searching Slider");
         //slider = GameObject.FindGameObjectWithTag("canvas").GetComponent<Slider>();
         if (GameObject.FindGameObjectWithTag("canvas"))
         {
