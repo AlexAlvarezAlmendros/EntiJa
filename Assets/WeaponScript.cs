@@ -29,6 +29,7 @@ public class WeaponScript : MonoBehaviour
     }
     void Shoot()
     {
+        GameController.Instance.quitEnergy(damage);
         RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.position, firePoint.right, 30);
         StartLaserAnim();
 

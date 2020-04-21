@@ -119,7 +119,7 @@ public class CarController : MonoBehaviour
             switch (powerUpScript.powerUpType)
             {
                 case PowerUp.Energy:
-                    GameController.Instance.setEnergy(20);
+                    GameController.Instance.giveEnergy(20);
                     break;
                 case PowerUp.Boost:
                     //SET fuelConsumedXSec = 0 FOR X SECONDS
