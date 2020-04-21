@@ -170,15 +170,18 @@ public class CarController : MonoBehaviour
         {
             animator.SetBool(GroundingID, true);
         }
+
         bool isShielded = animator.GetBool(ShieldID);
-        if (coll.gameObject.tag.Equals("Enemy"))
+        if (coll.gameObject.tag.Equals("Enemy") && invulnerableTime == false)
         {
             GameObject clone = (GameObject)Instantiate(explosion, this.transform.position, Quaternion.identity);
             Destroy(clone, 1.0f);
             //decrementLives();
             GameController.instance.lives--;
+            
             if (isShielded)
             {
+                Debug.Log("No more Shield");
                 ShieldOverlay.SetBool(ShieldID, false);
             }
         }
