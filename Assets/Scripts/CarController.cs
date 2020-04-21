@@ -42,20 +42,16 @@ public class CarController : MonoBehaviour
         rig = GetComponent<Rigidbody2D>();
         GameObject gameControllerObject = GameObject.FindWithTag("GameController");
     }
-
-    private void FixedUpdate()
+    private void Update()
     {
         bool isGrounding = animator.GetBool(GroundingID);
-        bool isFlying = animator.GetBool(FlyingID);
-
-        if (transform.position.x < cam.transform.position.x - 3.65f)
-        {
-            transform.position = new Vector3(cam.transform.position.x - 3.65f, transform.position.y, transform.position.z);
-        }
-
         if (isGrounding && Input.GetButtonDown("Jump"))
         {
             rig.AddForce(jumpForce * transform.up, ForceMode2D.Impulse);
+        }
+        if (Input.GetKey(KeyCode.Space))
+        {
+            rig.velocity = Vector2.up * jumpForce;
         }
 
         if (Input.GetButtonDown("Fire1") && canShoot)
@@ -63,6 +59,16 @@ public class CarController : MonoBehaviour
             animator.SetTrigger("Shoot");
             Debug.Log("click");
 
+        }
+        float energy = GameController.Instance.getEnergy();
+    }
+    private void FixedUpdate()
+    {
+        bool isFlying = animator.GetBool(FlyingID);
+
+        if (transform.position.x < cam.transform.position.x - 3.65f)
+        {
+            transform.position = new Vector3(cam.transform.position.x - 3.65f, transform.position.y, transform.position.z);
         }
 
         float moveInput = Input.GetAxisRaw("Horizontal");
@@ -76,8 +82,6 @@ public class CarController : MonoBehaviour
         }
 
         transform.Translate(velocity * Time.deltaTime);
-
-        float energy = GameController.Instance.getEnergy();
     }
 
     public void StartLaserAnim()
