@@ -22,6 +22,10 @@ public class CarController : MonoBehaviour
     public float invulnerableDelay;
     private float invulnetableTmp;
 
+    private bool boosted = false;
+    public float boostDelay;
+    private float boostTmp;
+
     private PowerUpScript powerUpScript;
 
     private Animator animator;
@@ -70,7 +74,7 @@ public class CarController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Space) && GameController.Instance.energy > 0 && canFly == true) //FLY
         {
-            GameController.Instance.useEnergy(fuelConsumedXSec);
+            if (boosted == false) { GameController.Instance.useEnergy(fuelConsumedXSec); }
             rig.velocity = Vector2.up * flyForce;
         }
         if (flyTmp >= flyDelay) { canFly = true; flyTmp = 0; }
@@ -85,7 +89,13 @@ public class CarController : MonoBehaviour
             invulnetableTmp += Time.deltaTime * 10;
         }
         else { invulnerableTime = false; invulnetableTmp = 0; }
-        
+
+        if (boosted == true && boostTmp <= boostDelay)
+        {
+            boostTmp += Time.deltaTime * 10;
+        }
+        else { boosted = false; boostTmp = 0; }
+
         float energy = GameController.Instance.getEnergy();
     }
     private void FixedUpdate()
@@ -126,7 +136,7 @@ public class CarController : MonoBehaviour
                     GameController.Instance.setEnergy(20);
                     break;
                 case PowerUp.Boost:
-                    //SET fuelConsumedXSec = 0 FOR X SECONDS
+                    boosted = true;
                     break;
                 case PowerUp.Shield:
                     GameController.Instance.lives = 2;
