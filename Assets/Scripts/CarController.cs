@@ -81,6 +81,7 @@ public class CarController : MonoBehaviour
     }
     private void Update()
     {
+        float delta = Time.deltaTime * 100;
         if (GameController.instance.lives <= 0 || this.transform.position.y == -5.87)
         {
             animator.SetBool(isDeadID, true);
@@ -95,7 +96,7 @@ public class CarController : MonoBehaviour
         bool isGrounding = animator.GetBool(GroundingID);
         if (isGrounding && Input.GetKey(KeyCode.Space)) //JUMP
         {
-            rig.AddForce(jumpForce * transform.up * Time.deltaTime * 10, ForceMode2D.Impulse);
+            rig.AddForce(jumpForce * transform.up * delta, ForceMode2D.Impulse);
         }
         if (Input.GetKey(KeyCode.Space) && GameController.instance.energy > 0 && canFly == true) //FLY
         {

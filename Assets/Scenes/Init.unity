@@ -306,7 +306,7 @@ PrefabInstance:
     - target: {fileID: 8238808544109622568, guid: 832b1e948648c8d49afa56c7957a9f10,
         type: 3}
       propertyPath: sounds.Array.data[0].volume
-      value: 0.349
+      value: 0.238
       objectReference: {fileID: 0}
     - target: {fileID: 8238808544109622568, guid: 832b1e948648c8d49afa56c7957a9f10,
         type: 3}
@@ -326,7 +326,7 @@ PrefabInstance:
     - target: {fileID: 8238808544109622568, guid: 832b1e948648c8d49afa56c7957a9f10,
         type: 3}
       propertyPath: sounds.Array.data[0].pitch
-      value: 0.42
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8238808544109622569, guid: 832b1e948648c8d49afa56c7957a9f10,
         type: 3}
