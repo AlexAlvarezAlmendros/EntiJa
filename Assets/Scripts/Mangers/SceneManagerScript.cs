@@ -11,6 +11,13 @@ public class SceneManagerScript : MonoBehaviour
             case "AlexScene":
                 FindObjectOfType<AudioManager>().Stop("MenuMusic");
                 break;
+            case "MainMenu":
+                if (FindObjectOfType<AudioManager>().Equals("MenuMusic")){
+                    
+                    FindObjectOfType<AudioManager>().Play("MenuMusic");
+                }
+                
+                break;
             default:
                 break;
         }
