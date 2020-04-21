@@ -12,6 +12,8 @@ public class GameController : MonoBehaviour
     public int record;
     public float energy;
     public static GameController instance { get; private set; }
+
+    public bool GameON;
     
 
     void Awake()
@@ -44,23 +46,19 @@ public class GameController : MonoBehaviour
             Application.Quit();
     }
 
+    void FixedUpdate()
+    {
+        if (GameON == true)
+        {
+            hiscore += 1;
+        }
+    }
+
     public void BeginGame()
     {
 
     }
-    
 
-    public void DecrementLives()
-    {
-        lives--;
 
-        // Has player run out of lives?
-        if (lives < 1)
-        {
-            SceneManager.LoadScene("Game_Over");
-            // Restart the game
-            BeginGame();
-        }
-    }
 }
     

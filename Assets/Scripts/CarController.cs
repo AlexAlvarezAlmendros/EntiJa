@@ -65,7 +65,9 @@ public class CarController : MonoBehaviour
         rig = GetComponent<Rigidbody2D>();
         GameObject gameControllerObject = GameObject.FindWithTag("GameController");
 
-
+        GameController.instance.GameON = true;
+        GameController.instance.hiscore = 0;
+        GameController.instance.energy = 100;
     }
     private void Update()
     {
@@ -73,6 +75,9 @@ public class CarController : MonoBehaviour
         {
             animator.SetBool(isDeadID, true);
             //DEATH ANIMATION
+            GameController.instance.GameON = false;
+            GameController.instance.lives = 1;
+            SceneManager.LoadScene("GameOver");
         }
 
         bool isGrounding = animator.GetBool(GroundingID);
@@ -127,10 +132,9 @@ public class CarController : MonoBehaviour
         {
             transform.position = new Vector3(cam.transform.position.x + 4.5f, transform.position.y, transform.position.z);
         }
-        if (transform.position.y < cam.transform.position.y - 8f) //MAX DOWN
+        if (transform.position.y < cam.transform.position.y - 10f) //MAX DOWN
         {
-            Debug.Log("Death");
-
+            GameController.instance.lives = 0;
         }
 
         float moveInput = Input.GetAxisRaw("Horizontal");
