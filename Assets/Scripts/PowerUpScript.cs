@@ -20,13 +20,13 @@ public class PowerUpScript : MonoBehaviour
         switch (powerUpType)
         {
             case PowerUp.Energy:
-
+                animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Energy");
                 break;
             case PowerUp.Boost:
-                //animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("AnimationChangeScene");
+                animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Boost");
                 break;
             case PowerUp.Shield:
-
+                animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Shield");
                 break;
         }
     }
