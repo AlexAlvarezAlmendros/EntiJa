@@ -35,8 +35,6 @@ public class PowerUpScript : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            SFXManager.Instance.PlayAudio(0);
-            //SFXManager.Instance.PlayInLoop(0);
             Destroy(gameObject);
         }
     }

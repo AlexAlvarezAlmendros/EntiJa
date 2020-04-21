@@ -47,6 +47,7 @@ public class CarController : MonoBehaviour
 
     void Start()
     {
+        FindObjectOfType<AudioManager>().Play("Disparo");
         giveEnergy(100);
         transform.position = new Vector3(-4.44f, -3.16f, 0f);
         animator = GetComponent<Animator>();
@@ -159,6 +160,7 @@ public class CarController : MonoBehaviour
                     ShieldOverlay.SetBool(ShieldID, true);
                     break;
             }
+            Destroy(coll.gameObject);
         }
 
     }
@@ -172,8 +174,8 @@ public class CarController : MonoBehaviour
         if (coll.gameObject.tag.Equals("Enemy"))
         {
             GameObject clone = (GameObject)Instantiate(explosion, this.transform.position, Quaternion.identity);
-            //Destroy(gameObject);
-            //Destroy(clone, 0.5f);
+            Destroy(clone, 1.0f);
+            //decrementLives();
             GameController.instance.lives--;
             if (isShielded)
             {
