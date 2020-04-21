@@ -901,7 +901,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 0fe26eae9f6da6c45b38572aa95cfa22, type: 3}
+    m_Font: {fileID: 12800000, guid: 1e23a650bc3235449897e05db637a716, type: 3}
     m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
@@ -913,7 +913,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: SCORE 090
+  m_Text: km 090
 --- !u!222 &1193409229
 CanvasRenderer:
   m_ObjectHideFlags: 0
