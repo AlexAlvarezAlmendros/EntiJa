@@ -45,9 +45,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PowerUpPrefab: {fileID: 7932578787555061042, guid: 8dbf65a0397297049b2f3c58bdeaddb3,
     type: 3}
-  maxDelay: 10
+  maxDelay: 5
   minDelay: 2
-  FirstSpawn: 10
+  FirstSpawn: 3
   whatToSpawn: 0
   whereToSpawn: 0
   whenToSpawn: 0
