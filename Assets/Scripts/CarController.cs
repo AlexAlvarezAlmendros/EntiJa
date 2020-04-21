@@ -71,7 +71,7 @@ public class CarController : MonoBehaviour
         {
             animator.SetBool(isDeadID, true);
             //DEATH ANIMATION
-
+            GameController.instance.lives = 1;
             SceneManager.LoadScene("GameOver");
         }
 
