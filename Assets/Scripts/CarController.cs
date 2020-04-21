@@ -37,6 +37,10 @@ public class CarController : MonoBehaviour
     public GameObject cam;
     public GameObject explosion;
 
+    public GameObject PrefabEnemySP;
+    public GameObject PrefabPowerUpSp;
+    public GameObject PrefabPlatformSP;
+
     public Animator ShieldOverlay;
 
     private int GroundingID;
@@ -70,6 +74,10 @@ public class CarController : MonoBehaviour
         GameController.instance.GameON = true;
         GameController.instance.hiscore = 0;
         GameController.instance.energy = 100;
+
+        Instantiate(PrefabEnemySP, this.transform.position, Quaternion.identity);
+        Instantiate(PrefabPowerUpSp, this.transform.position, Quaternion.identity);
+        //Instantiate(PrefabPlatformSP, this.transform.position, Quaternion.identity);
     }
     private void Update()
     {
@@ -123,7 +131,6 @@ public class CarController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        Debug.LogError("CAR READY");
         scoreText.text = GameController.instance.hiscore + " km";
         bool isFlying = animator.GetBool(FlyingID);
 
