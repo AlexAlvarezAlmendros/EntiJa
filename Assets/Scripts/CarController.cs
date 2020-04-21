@@ -28,6 +28,8 @@ public class CarController : MonoBehaviour
     private PowerUpScript powerUpScript;
 
     public Slider slider;
+    public Text scoreText;
+
     public Animator animator;
     private Vector2 velocity;
     private BoxCollider2D collider;
@@ -121,7 +123,7 @@ public class CarController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-
+        scoreText.text = "SCORE " + GameController.instance.hiscore;
         bool isFlying = animator.GetBool(FlyingID);
 
         if (transform.position.x < cam.transform.position.x - 4.5f) //MAX IZQUIERDA
