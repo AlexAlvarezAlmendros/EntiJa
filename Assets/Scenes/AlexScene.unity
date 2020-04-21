@@ -696,7 +696,7 @@ PrefabInstance:
     - target: {fileID: 7222568334203614229, guid: e84e511f522e9464fb051a158555352e,
         type: 3}
       propertyPath: flyDelay
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7222568334203614229, guid: e84e511f522e9464fb051a158555352e,
         type: 3}

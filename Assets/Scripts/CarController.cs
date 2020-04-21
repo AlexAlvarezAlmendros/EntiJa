@@ -64,6 +64,10 @@ public class CarController : MonoBehaviour
 
         rig = GetComponent<Rigidbody2D>();
         GameObject gameControllerObject = GameObject.FindWithTag("GameController");
+
+        GameController.instance.GameON = true;
+        GameController.instance.hiscore = 0;
+        GameController.instance.energy = 100;
     }
     private void Update()
     {
@@ -71,6 +75,7 @@ public class CarController : MonoBehaviour
         {
             animator.SetBool(isDeadID, true);
             //DEATH ANIMATION
+            GameController.instance.GameON = false;
             GameController.instance.lives = 1;
             SceneManager.LoadScene("GameOver");
         }
