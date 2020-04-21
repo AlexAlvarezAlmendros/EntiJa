@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class CarController : MonoBehaviour
 {
-    bool isDead = false;
-
     private float speed = 5f;
     private float walkAcceleration = 75f;
     private float groundFriction = 70f;
