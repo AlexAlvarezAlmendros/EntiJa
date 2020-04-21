@@ -696,7 +696,7 @@ PrefabInstance:
     - target: {fileID: 7222568334203614229, guid: e84e511f522e9464fb051a158555352e,
         type: 3}
       propertyPath: flyDelay
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7222568334203614229, guid: e84e511f522e9464fb051a158555352e,
         type: 3}
@@ -726,7 +726,7 @@ PrefabInstance:
     - target: {fileID: 7222568334203614229, guid: e84e511f522e9464fb051a158555352e,
         type: 3}
       propertyPath: invulnerableDelay
-      value: 2
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7222568334203614229, guid: e84e511f522e9464fb051a158555352e,
         type: 3}
@@ -736,7 +736,7 @@ PrefabInstance:
     - target: {fileID: 7222568334203614229, guid: e84e511f522e9464fb051a158555352e,
         type: 3}
       propertyPath: boostDelay
-      value: 2.19
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8889106061152344787, guid: e84e511f522e9464fb051a158555352e,
         type: 3}
