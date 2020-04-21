@@ -7,7 +7,6 @@ using System.IO;
 
 public class GameController : MonoBehaviour
 {
-    public Slider slider;
     public int lives;
     public int hiscore;
     public int record;
@@ -62,16 +61,6 @@ public class GameController : MonoBehaviour
             // Restart the game
             BeginGame();
         }
-    }
-
-    public void SetSlider()
-    {
-        //slider = GameObject.FindGameObjectWithTag("canvas").GetComponent<Slider>();
-        if (GameObject.FindGameObjectWithTag("canvas"))
-        {
-            slider = (Slider)FindObjectOfType(typeof(Slider));
-        }
-
     }
 }
     

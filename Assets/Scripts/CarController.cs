@@ -17,12 +17,12 @@ public class CarController : MonoBehaviour
     private float flyTmp = 0f;
     private bool canFly = false;
 
-    private bool invulnerableTime = false;
     public float invulnerableDelay;
+    public bool invulnerableTime = false;
     private float invulnetableTmp;
 
-    public bool boosted = false;
     public float boostDelay;
+    public bool boosted = false;
     private float boostTmp;
 
     private PowerUpScript powerUpScript;
@@ -42,7 +42,7 @@ public class CarController : MonoBehaviour
     private int FlyingID;
     private int isDeadID;
     private int ShieldID;
-    
+
     private bool once = false;
     private bool audioplaying;
 
@@ -54,7 +54,7 @@ public class CarController : MonoBehaviour
         transform.position = new Vector3(-3.877f, -3.883f, 0f);
         animator = GetComponent<Animator>();
         collider = GetComponent<BoxCollider2D>();
-        
+
 
         GroundingID = Animator.StringToHash("Grounding");
         JumpedID = Animator.StringToHash("Jumped");
@@ -69,13 +69,6 @@ public class CarController : MonoBehaviour
     }
     private void Update()
     {
-        
-        if (once == false)
-        {
-            GameController.instance.SetSlider();
-            once = true;
-        }
-
         if (GameController.instance.lives <= 0)
         {
             animator.SetBool(isDeadID, true);
@@ -85,7 +78,7 @@ public class CarController : MonoBehaviour
         bool isGrounding = animator.GetBool(GroundingID);
         if (isGrounding && Input.GetKey(KeyCode.Space)) //JUMP
         {
-            rig.AddForce(jumpForce * transform.up * Time.deltaTime * 10, ForceMode2D.Impulse); 
+            rig.AddForce(jumpForce * transform.up * Time.deltaTime * 10, ForceMode2D.Impulse);
         }
         if (Input.GetKey(KeyCode.Space) && GameController.instance.energy > 0 && canFly == true) //FLY
         {
@@ -123,12 +116,21 @@ public class CarController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        
+
         bool isFlying = animator.GetBool(FlyingID);
 
-        if (transform.position.x < cam.transform.position.x - 3.65f)
+        if (transform.position.x < cam.transform.position.x - 4.5f) //MAX IZQUIERDA
         {
-            transform.position = new Vector3(cam.transform.position.x - 3.65f, transform.position.y, transform.position.z);
+            transform.position = new Vector3(cam.transform.position.x - 4.5f, transform.position.y, transform.position.z);
+        }
+        if (transform.position.x > cam.transform.position.x + 4.5f) //MAX DERECHA
+        {
+            transform.position = new Vector3(cam.transform.position.x + 4.5f, transform.position.y, transform.position.z);
+        }
+        if (transform.position.y < cam.transform.position.y - 8f) //MAX DOWN
+        {
+            Debug.Log("Death");
+
         }
 
         float moveInput = Input.GetAxisRaw("Horizontal");
@@ -146,11 +148,6 @@ public class CarController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.gameObject.tag.Equals("Enemy"))
-        {
-            GameController.instance.lives--;
-            invulnerableTime = true;
-        }
         if (coll.gameObject.tag.Equals("PowerUp"))
         {
             FindObjectOfType<AudioManager>().Play("PowerUp");
@@ -159,7 +156,7 @@ public class CarController : MonoBehaviour
             {
                 case PowerUp.Energy:
                     if (GameController.instance.energy + 20 > 100) { giveEnergy(100 - GameController.instance.energy); }
-                    else { giveEnergy(20); }
+                    else { giveEnergy(50); }
                     break;
                 case PowerUp.Boost:
                     boosted = true;
@@ -183,13 +180,11 @@ public class CarController : MonoBehaviour
         bool isShielded = ShieldOverlay.GetBool(ShieldID);
         if (coll.gameObject.tag.Equals("Enemy") && invulnerableTime == false)
         {
+            invulnerableTime = true;
             GameObject clone = (GameObject)Instantiate(explosion, this.transform.position, Quaternion.identity);
             Destroy(clone, 1.0f);
-            //decrementLives();
             GameController.instance.lives--;
-            
-            Debug.Log("Before Shield: ");
-            if (!isShielded) { Debug.Log("Not Shielded"); }
+
             if (isShielded)
             {
                 Debug.Log("No more Shield");
@@ -203,15 +198,8 @@ public class CarController : MonoBehaviour
         {
             animator.SetBool(GroundingID, false);
         }
-
-        //if (coll.gameObject.tag.Equals("Enemy"))
-        //{
-        //    GameObject clone = (GameObject)Instantiate(explosion, this.transform.position, Quaternion.identity);
-        //    Destroy(gameObject);
-        //    Destroy(clone, 0.5f);
-
-        //}
     }
+
     public void giveEnergy(float _energy)
     {
         GameController.instance.energy = GameController.instance.energy + _energy;
@@ -222,5 +210,4 @@ public class CarController : MonoBehaviour
         GameController.instance.energy = GameController.instance.energy - _energy;
         slider.value = GameController.instance.energy;
     }
-    
 }
