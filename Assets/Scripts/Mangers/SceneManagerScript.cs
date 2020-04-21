@@ -6,21 +6,8 @@ using UnityEngine.SceneManagement;
 public class SceneManagerScript : MonoBehaviour
 {
     public void ChangeScene (string scName) {
-        switch (scName)
-        {
-            case "MainMenu":
-                SceneManager.LoadScene(scName);
-                break;
-            case "Game":
-                FindObjectOfType<AudioManager>().Stop("MenuMusic");
-                FindObjectOfType<AudioManager>().Play("GameMusic");
-                SceneManager.LoadScene(scName);
-                break;
-            default:
-                SceneManager.LoadScene(scName);
-                break;
-        }
         
+        SceneManager.LoadScene(scName);
     }
 
     public void ExitGame() {
