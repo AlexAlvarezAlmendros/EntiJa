@@ -51,7 +51,7 @@ public class CarController : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("GameMusic");
         audioplaying = false;
         giveEnergy(100);
-        transform.position = new Vector3(-4.44f, -3.16f, 0f);
+        transform.position = new Vector3(-3.877f, -3.883f, 0f);
         animator = GetComponent<Animator>();
         collider = GetComponent<BoxCollider2D>();
         
