@@ -76,7 +76,6 @@ public class CarController : MonoBehaviour
         if (GameController.instance.lives <= 0)
         {
             animator.SetBool(isDeadID, true);
-            Debug.Log("Dead");
             //DEATH ANIMATION
         }
 
