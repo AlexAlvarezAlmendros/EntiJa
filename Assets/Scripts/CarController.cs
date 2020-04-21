@@ -64,7 +64,7 @@ public class CarController : MonoBehaviour
         bool isGrounding = animator.GetBool(GroundingID);
         if (isGrounding && Input.GetKey(KeyCode.Space)) //JUMP
         {
-            rig.AddForce(jumpForce * transform.up, ForceMode2D.Impulse); 
+            rig.AddForce(jumpForce * transform.up * Time.deltaTime * 10, ForceMode2D.Impulse); 
         }
         if (Input.GetKey(KeyCode.Space) && GameController.Instance.energy > 0 && canFly == true) //FLY
         {

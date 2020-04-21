@@ -2485,6 +2485,16 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 197614044}
+    - target: {fileID: 1085646699181580673, guid: 4077c596088a6b54bb9a7fda705725aa,
+        type: 3}
+      propertyPath: jumpForce
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1085646699181580673, guid: 4077c596088a6b54bb9a7fda705725aa,
+        type: 3}
+      propertyPath: flyForce
+      value: 3.76
+      objectReference: {fileID: 0}
     - target: {fileID: 1085646699181580674, guid: 4077c596088a6b54bb9a7fda705725aa,
         type: 3}
       propertyPath: m_Name
