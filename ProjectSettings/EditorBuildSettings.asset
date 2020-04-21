@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CarlosScene.unity
     guid: ec1b1c21e0488114daedb9a8d9909053
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 0859346174c97a04ea99aedef9f4aa19
   m_configObjects: {}
