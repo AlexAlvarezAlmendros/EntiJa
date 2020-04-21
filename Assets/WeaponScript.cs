@@ -24,7 +24,7 @@ public class WeaponScript : MonoBehaviour
 
     void Update()
     {
-        energy = GameController.Instance.getEnergy();
+        energy = GameController.instance.getEnergy();
         if (Input.GetButtonDown("Fire1") && energy > 20 )
         {
             Shoot();
@@ -33,7 +33,7 @@ public class WeaponScript : MonoBehaviour
     void Shoot()
     {
         FindObjectOfType<AudioManager>().Play("Disparo");
-        GameController.Instance.useEnergy(damage);
+        GameController.instance.useEnergy(damage);
         RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.position, firePoint.right, 30);
         StartLaserAnim();
         GameObject clone = (GameObject)Instantiate(laser, new Vector3(firePoint.position.x + 5, firePoint.position.y - 0.57f, firePoint.position.z), Quaternion.identity, player.transform);
