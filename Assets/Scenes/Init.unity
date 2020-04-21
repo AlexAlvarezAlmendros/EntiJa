@@ -223,31 +223,31 @@ MonoBehaviour:
   - name: Fly
     clip: {fileID: 8300000, guid: fdd14159369e45a40af94c2a71f6ac61, type: 3}
     volume: 0.659
-    pitch: 0.1
+    pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: GameMusic
     clip: {fileID: 8300000, guid: a59a8d8cf6bfb644b96301a87386b6c9, type: 3}
     volume: 0.659
-    pitch: 0.1
+    pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: MenuMusic
-    clip: {fileID: 8300000, guid: 2cff6e8610dedd645ac8d376bb1d79cc, type: 3}
+    clip: {fileID: 8300000, guid: 08e8da5a4f9020f49bdfa7962caf5339, type: 3}
     volume: 0.659
-    pitch: 0.1
+    pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: Disparo
     clip: {fileID: 8300000, guid: 17932e69de55b764cbed3b9046a7382a, type: 3}
     volume: 0.659
-    pitch: 0.1
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: PowerUp
     clip: {fileID: 8300000, guid: b1342915ab9af614182650a213ad2961, type: 3}
     volume: 0.659
-    pitch: 0.1
+    pitch: 1
     loop: 0
     source: {fileID: 0}
 --- !u!4 &814004002

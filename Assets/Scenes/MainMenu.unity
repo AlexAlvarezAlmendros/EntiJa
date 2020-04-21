@@ -388,7 +388,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1118658991}
+      - m_Target: {fileID: 9024574078439544323, guid: 5c3e7322052b59e4381382f04cd4b06f,
+          type: 3}
         m_MethodName: ChangeScene
         m_Mode: 5
         m_Arguments:
@@ -396,7 +397,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Settings
+          m_StringArgument: Options
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1030404720
@@ -435,87 +436,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1030404717}
   m_CullTransparentMesh: 0
---- !u!1001 &1118658990
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3337625149593624000, guid: 5c3e7322052b59e4381382f04cd4b06f,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3337625149593624000, guid: 5c3e7322052b59e4381382f04cd4b06f,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3337625149593624000, guid: 5c3e7322052b59e4381382f04cd4b06f,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3337625149593624000, guid: 5c3e7322052b59e4381382f04cd4b06f,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3337625149593624000, guid: 5c3e7322052b59e4381382f04cd4b06f,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3337625149593624000, guid: 5c3e7322052b59e4381382f04cd4b06f,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3337625149593624000, guid: 5c3e7322052b59e4381382f04cd4b06f,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3337625149593624000, guid: 5c3e7322052b59e4381382f04cd4b06f,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3337625149593624000, guid: 5c3e7322052b59e4381382f04cd4b06f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3337625149593624000, guid: 5c3e7322052b59e4381382f04cd4b06f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3337625149593624000, guid: 5c3e7322052b59e4381382f04cd4b06f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6097432475666851628, guid: 5c3e7322052b59e4381382f04cd4b06f,
-        type: 3}
-      propertyPath: m_Name
-      value: SceneManager
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5c3e7322052b59e4381382f04cd4b06f, type: 3}
---- !u!114 &1118658991 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9024574078439544323, guid: 5c3e7322052b59e4381382f04cd4b06f,
-    type: 3}
-  m_PrefabInstance: {fileID: 1118658990}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e9af898dd9972a4dae2f4afda03fd54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1470939881
 GameObject:
   m_ObjectHideFlags: 0
@@ -675,7 +595,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1118658991}
+      - m_Target: {fileID: 9024574078439544323, guid: 5c3e7322052b59e4381382f04cd4b06f,
+          type: 3}
         m_MethodName: ChangeScene
         m_Mode: 5
         m_Arguments:
@@ -804,7 +725,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1118658991}
+      - m_Target: {fileID: 9024574078439544323, guid: 5c3e7322052b59e4381382f04cd4b06f,
+          type: 3}
         m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
@@ -999,7 +921,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1118658991}
+      - m_Target: {fileID: 9024574078439544323, guid: 5c3e7322052b59e4381382f04cd4b06f,
+          type: 3}
         m_MethodName: ChangeScene
         m_Mode: 5
         m_Arguments:
