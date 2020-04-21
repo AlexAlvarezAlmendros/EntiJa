@@ -43,7 +43,7 @@ public class CarController : MonoBehaviour
 
     void Start()
     {
-        GameController.Instance.giveEnergy(100);
+        GameController.instance.giveEnergy(100);
         transform.position = new Vector3(-4.44f, -3.16f, 0f);
         animator = GetComponent<Animator>();
         collider = GetComponent<BoxCollider2D>();
@@ -60,7 +60,7 @@ public class CarController : MonoBehaviour
     }
     private void Update()
     {
-        if (GameController.Instance.lives <= 0)
+        if (GameController.instance.lives <= 0)
         {
             animator.SetBool(isDeadID, true);
             Debug.Log("Dead");
@@ -72,9 +72,9 @@ public class CarController : MonoBehaviour
         {
             rig.AddForce(jumpForce * transform.up * Time.deltaTime * 10, ForceMode2D.Impulse); 
         }
-        if (Input.GetKey(KeyCode.Space) && GameController.Instance.energy > 0 && canFly == true) //FLY
+        if (Input.GetKey(KeyCode.Space) && GameController.instance.energy > 0 && canFly == true) //FLY
         {
-            if (boosted == false) { GameController.Instance.useEnergy(fuelConsumedXSec); }
+            if (boosted == false) { GameController.instance.useEnergy(fuelConsumedXSec); }
             rig.velocity = Vector2.up * flyForce;
         }
         if (flyTmp >= flyDelay) { canFly = true; flyTmp = 0; }
@@ -96,7 +96,7 @@ public class CarController : MonoBehaviour
         }
         else { boosted = false; boostTmp = 0; }
 
-        float energy = GameController.Instance.getEnergy();
+        float energy = GameController.instance.getEnergy();          
         if (!isGrounding)
         {
             //FindObjectOfType<AudioManager>().Play("Fly");
@@ -128,7 +128,7 @@ public class CarController : MonoBehaviour
     {
         if (coll.gameObject.tag.Equals("Enemy"))
         {
-            GameController.Instance.lives--;
+            GameController.instance.lives--;
             invulnerableTime = true;
         }
         if (coll.gameObject.tag.Equals("PowerUp"))
@@ -144,7 +144,7 @@ public class CarController : MonoBehaviour
                     boosted = true;
                     break;
                 case PowerUp.Shield:
-                    GameController.Instance.lives = 2;
+                    GameController.instance.lives = 2;
                     ShieldOverlay.SetBool(ShieldID, true);
                     break;
             }
@@ -163,7 +163,7 @@ public class CarController : MonoBehaviour
             GameObject clone = (GameObject)Instantiate(explosion, this.transform.position, Quaternion.identity);
             //Destroy(gameObject);
             //Destroy(clone, 0.5f);
-            GameController.Instance.lives--;
+            GameController.instance.lives--;
             if (isShielded)
             {
                 ShieldOverlay.SetBool(ShieldID, false);

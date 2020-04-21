@@ -12,21 +12,19 @@ public class GameController : MonoBehaviour
     public int hiscore;
     public int record;
     public float energy;
-    public static GameController Instance { get; private set; }
+    public static GameController instance { get; private set; }
     
 
     void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else if (Instance != this)
+        DontDestroyOnLoad(gameObject);
+        if (instance == null)
+            instance = this;
+        else
         {
             Destroy(gameObject);
+            return;
         }
-        
-        DontDestroyOnLoad(gameObject);
     }
     // Start is called before the first frame update
     void Start()

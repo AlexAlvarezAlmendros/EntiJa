@@ -24,7 +24,7 @@ public class WeaponScript : MonoBehaviour
 
     void Update()
     {
-        energy = GameController.Instance.getEnergy();
+        energy = GameController.instance.getEnergy();
         if (Input.GetButtonDown("Fire1") && energy > 20 )
         {
             Shoot();

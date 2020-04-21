@@ -56,7 +56,7 @@ public class Enemy1Script : MonoBehaviour
         }
         if (EnemyHP <= 0)
         {
-            GameController.Instance.hiscore += 100;
+            GameController.instance.hiscore += 100;
             //cameraScript = CameraController.GetComponent<CameraControl>();
             //cameraScript.auidoS.clip = SoundManager.Instance.Enemy2Death;
             //cameraScript.auidoS.Play();
