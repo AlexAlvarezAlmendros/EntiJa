@@ -31,6 +31,7 @@ public class CarController : MonoBehaviour
     private BoxCollider2D collider;
     private Rigidbody2D rig;
     public GameObject cam;
+    public GameObject explosion;
 
     private int GroundingID;
     private int JumpedID;
@@ -152,5 +153,14 @@ public class CarController : MonoBehaviour
         {
             animator.SetBool(GroundingID, false);
         }
+
+        if (coll.gameObject.tag.Equals("Enemy"))
+        {
+            GameObject clone = (GameObject)Instantiate(explosion, this.transform.position, Quaternion.identity);
+            Destroy(gameObject);
+            Destroy(clone, 0.5f);
+
+        }
     }
+
 }

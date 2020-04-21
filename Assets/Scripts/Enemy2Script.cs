@@ -12,7 +12,6 @@ public class Enemy2Script : MonoBehaviour
     public float enemySpeed;
 
     private bool isGoingRight;
-    private int damage = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +30,10 @@ public class Enemy2Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (EnemyHP < 1)
+        {
+            Destroy(gameObject);
+        }
         if(!isGoingRight)
         {
             transform.position = Vector3.MoveTowards(transform.position, endPoint.transform.position, enemySpeed * Time.deltaTime);
@@ -53,7 +56,7 @@ public class Enemy2Script : MonoBehaviour
     }
     public void takeDamage(int _damage)
     {
-        damage = damage - _damage;
+        EnemyHP = EnemyHP - _damage;
     }
 
     void FixedUpdate()

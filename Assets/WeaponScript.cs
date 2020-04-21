@@ -6,6 +6,7 @@ public class WeaponScript : MonoBehaviour
 {
     public Transform firePoint;
     public GameObject laser;
+    public GameObject exlosion;
     private GameObject player;
     private GameObject enemy;
     private Animator laserAnimator;
@@ -39,12 +40,19 @@ public class WeaponScript : MonoBehaviour
         if (hitInfo)
         {
             Enemy2Script enemy = hitInfo.transform.GetComponent<Enemy2Script>();
-            if(enemy != null)
+            Enemy1Script enemy2 = hitInfo.transform.GetComponent<Enemy1Script>();
+            if (enemy != null)
             {
                 enemy.takeDamage(damage);
+            }else if (enemy2 != null )
+            {
+                enemy2.takeDamage(damage);
             }
+            GameObject cloneexplosion = (GameObject)Instantiate(exlosion, hitInfo.point, Quaternion.identity);
+            Destroy(cloneexplosion, 1.0f);
+
         }
-        
+
     }
     IEnumerator WaitToShoot()
     {
