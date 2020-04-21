@@ -18,17 +18,15 @@ public class WeaponScript : MonoBehaviour
     void Start()
     {
         laserAnimator = laser.GetComponent<Animator>();
-        energy = GameController.Instance.getEnergy();
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
     {
-        GameObject lasershot = GameObject.FindGameObjectWithTag("Laser");
-        if (Input.GetButtonDown("Fire1") && canShoot)
+        energy = GameController.Instance.getEnergy();
+        if (Input.GetButtonDown("Fire1") && energy > 20 )
         {
             Shoot();
-            
         }
     }
     void Shoot()
@@ -56,6 +54,6 @@ public class WeaponScript : MonoBehaviour
     public void StartLaserAnim()
     {
         laserAnimator.SetTrigger("LaserShot");
-        canShoot = false;
+        //canShoot = false;
     }
 }
