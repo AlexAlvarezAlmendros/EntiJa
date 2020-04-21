@@ -118,6 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPoint: {fileID: 3636306933706907396}
   endPoint: {fileID: 3426905489364889960}
+  parentObj: {fileID: 7345785692753216666}
   Camara: {fileID: 0}
   EnemyHP: 1
   enemySpeed: 5

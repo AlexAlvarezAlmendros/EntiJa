@@ -6,6 +6,7 @@ public class Enemy2Script : MonoBehaviour
 {
     public GameObject startPoint;
     public GameObject endPoint;
+    public GameObject parentObj;
 
     public GameObject Camara;
     public int EnemyHP = 1;
@@ -30,10 +31,6 @@ public class Enemy2Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (EnemyHP < 1)
-        {
-            Destroy(gameObject);
-        }
         if(!isGoingRight)
         {
             transform.position = Vector3.MoveTowards(transform.position, endPoint.transform.position, enemySpeed * Time.deltaTime);
@@ -68,12 +65,12 @@ public class Enemy2Script : MonoBehaviour
             //cameraScript.auidoS.clip = SoundManager.Instance.Enemy2Death;
             //cameraScript.auidoS.Play();
 
-            Destroy(gameObject); //DESTROY
+            Destroy(parentObj); //DESTROY
         }
         else if (this.transform.position.x <= Camara.transform.position.x - 10 ||
         this.transform.position.y <= Camara.transform.position.y - 10)
         {
-            Destroy(gameObject); //DESTROY
+            Destroy(parentObj); //DESTROY
         }
     }
 }
