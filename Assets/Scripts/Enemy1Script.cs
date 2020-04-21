@@ -37,10 +37,15 @@ public class Enemy1Script : MonoBehaviour
         randomJump = Random.Range(minJumpDelay, maxJumpDelay);
         jumpDelay = randomJump;
     }
-
+    void Update()
+    {
+        if (EnemyHP < 1)
+        {
+            Destroy(gameObject);
+        }
+    }
     void FixedUpdate()
     {
-        
         float delta = Time.deltaTime * 1000;
         float deltasmall = Time.deltaTime * 100;
         if (this.transform.position.y <= Camara.transform.position.y - 4)
@@ -91,5 +96,9 @@ public class Enemy1Script : MonoBehaviour
         {
             grounded = false;
         }
+    }
+    public void takeDamage(int _damage)
+    {
+        EnemyHP = EnemyHP - _damage;
     }
 }

@@ -6,13 +6,13 @@ public class Enemy2Script : MonoBehaviour
 {
     public GameObject startPoint;
     public GameObject endPoint;
+    public GameObject parentObj;
 
     public GameObject Camara;
     public int EnemyHP = 1;
     public float enemySpeed;
 
     private bool isGoingRight;
-    private int damage = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -53,7 +53,7 @@ public class Enemy2Script : MonoBehaviour
     }
     public void takeDamage(int _damage)
     {
-        damage = damage - _damage;
+        EnemyHP = EnemyHP - _damage;
     }
 
     void FixedUpdate()
@@ -65,12 +65,12 @@ public class Enemy2Script : MonoBehaviour
             //cameraScript.auidoS.clip = SoundManager.Instance.Enemy2Death;
             //cameraScript.auidoS.Play();
 
-            Destroy(gameObject); //DESTROY
+            Destroy(parentObj); //DESTROY
         }
         else if (this.transform.position.x <= Camara.transform.position.x - 10 ||
         this.transform.position.y <= Camara.transform.position.y - 10)
         {
-            Destroy(gameObject); //DESTROY
+            Destroy(parentObj); //DESTROY
         }
     }
 }
