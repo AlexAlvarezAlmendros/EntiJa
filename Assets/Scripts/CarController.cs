@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 
@@ -26,7 +27,8 @@ public class CarController : MonoBehaviour
 
     private PowerUpScript powerUpScript;
 
-    private Animator animator;
+    public Slider slider;
+    public Animator animator;
     private Vector2 velocity;
     private BoxCollider2D collider;
     private Rigidbody2D rig;
@@ -40,12 +42,12 @@ public class CarController : MonoBehaviour
     private int FlyingID;
     private int isDeadID;
     private int ShieldID;
-
+    
     private bool once = false;
 
     void Start()
     {
-        GameController.instance.giveEnergy(100);
+        giveEnergy(100);
         transform.position = new Vector3(-4.44f, -3.16f, 0f);
         animator = GetComponent<Animator>();
         collider = GetComponent<BoxCollider2D>();
@@ -84,7 +86,7 @@ public class CarController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Space) && GameController.instance.energy > 0 && canFly == true) //FLY
         {
-            if (boosted == false) { GameController.instance.useEnergy(fuelConsumedXSec); }
+            if (boosted == false) { useEnergy(fuelConsumedXSec); }
             rig.velocity = Vector2.up * flyForce;
         }
         if (flyTmp >= flyDelay) { canFly = true; flyTmp = 0; }
@@ -105,8 +107,7 @@ public class CarController : MonoBehaviour
             boostTmp += Time.deltaTime * 10;
         }
         else { boosted = false; boostTmp = 0; }
-
-        float energy = GameController.instance.getEnergy();          
+      
         if (!isGrounding)
         {
             //FindObjectOfType<AudioManager>().Play("Fly");
@@ -147,8 +148,8 @@ public class CarController : MonoBehaviour
             switch (powerUpScript.powerUpType)
             {
                 case PowerUp.Energy:
-                    if (GameController.instance.energy + 20 > 100) { GameController.instance.giveEnergy(100 - GameController.instance.energy); }
-                    else { GameController.instance.giveEnergy(20); }
+                    if (GameController.instance.energy + 20 > 100) { giveEnergy(100 - GameController.instance.energy); }
+                    else { giveEnergy(20); }
                     break;
                 case PowerUp.Boost:
                     boosted = true;
@@ -195,5 +196,15 @@ public class CarController : MonoBehaviour
 
         //}
     }
-
+    public void giveEnergy(float _energy)
+    {
+        GameController.instance.energy = GameController.instance.energy + _energy;
+        slider.value = GameController.instance.energy;
+    }
+    public void useEnergy(float _energy)
+    {
+        GameController.instance.energy = GameController.instance.energy - _energy;
+        slider.value = GameController.instance.energy;
+    }
+    
 }

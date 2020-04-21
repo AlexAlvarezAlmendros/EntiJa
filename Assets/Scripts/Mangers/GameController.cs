@@ -49,20 +49,7 @@ public class GameController : MonoBehaviour
     {
 
     }
-    public void giveEnergy(float _energy)
-    {
-        energy = energy + _energy;
-        slider.value = energy;
-    }
-    public void useEnergy(float _energy)
-    {
-        energy = energy - _energy;
-        slider.value = energy;
-    }
-    public float getEnergy()
-    {
-        return energy;
-    }
+    
 
     public void DecrementLives()
     {
