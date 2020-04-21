@@ -17,15 +17,10 @@ public class CarController : MonoBehaviour
     private Rigidbody2D rig;
     public GameObject cam;
 
-    public GameObject laser;
-    public Animator laserAnimator;
-    private bool canShoot = true;
-    public int shootDelay;
 
     private int GroundingID;
     private int JumpedID;
     private int FlyingID;
-    private int LaserShotID;
 
     void Start()
     {
@@ -33,7 +28,7 @@ public class CarController : MonoBehaviour
         transform.position = new Vector3(-4.44f, -3.16f, 0f);
         animator = GetComponent<Animator>();
         collider = GetComponent<BoxCollider2D>();
-        laserAnimator = laser.GetComponent<Animator>();
+        
 
         GroundingID = Animator.StringToHash("Grounding");
         JumpedID = Animator.StringToHash("Jumped");
@@ -52,13 +47,6 @@ public class CarController : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             rig.velocity = Vector2.up * jumpForce;
-        }
-
-        if (Input.GetButtonDown("Fire1") && canShoot)
-        {
-            animator.SetTrigger("Shoot");
-            Debug.Log("click");
-
         }
         float energy = GameController.Instance.getEnergy();
     }
@@ -84,18 +72,7 @@ public class CarController : MonoBehaviour
         transform.Translate(velocity * Time.deltaTime);
     }
 
-    public void StartLaserAnim()
-    {
-        laserAnimator.SetTrigger("LaserShot");
-        canShoot = false;
-    }
-
-    IEnumerator WaitToShoot()
-    {
-        yield return new WaitForSecondsRealtime(2);
-        canShoot = true;
-    }
-
+    
     void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.gameObject.tag.Equals("Enemy"))
