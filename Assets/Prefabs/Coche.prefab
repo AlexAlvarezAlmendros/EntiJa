@@ -129,8 +129,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb117e8a2316aa84eaccf703c7f40730, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 4
-  flyForce: 1
+  jumpForce: 20
+  flyForce: 4
   fuelConsumedXSec: 0.1
   flyDelay: 4
   invulnerableDelay: 0
