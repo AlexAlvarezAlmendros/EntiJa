@@ -43,8 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67622e7d243b4249b2de46e665a313d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy1Prefab: {fileID: 0}
-  Camara: {fileID: 0}
+  Enemy1Prefab: {fileID: 815356806495100512, guid: 2e09415014629454a85fc326833d068c,
+    type: 3}
+  Enemy2Prefab: {fileID: 0}
   maxDelay: 0
   minDelay: 0
   FirstSpawn: 0
