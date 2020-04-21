@@ -1,12 +1,8 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/Grafics/buttons.meta
-guid: 89ac2ad8f4a878641beb90d8c0b7c8cc
-=======
-guid: 589057fef38954441ac22cdf79708207
->>>>>>> f35e38d8fc095d24fcdac80a5ecddb54d3206136:Assets/Grafics/Car_Fly_Animation.meta
+guid: 5bc7eb26eee54724082d53117f525c95
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+  userData:
+  assetBundleName:
+  assetBundleVariant:

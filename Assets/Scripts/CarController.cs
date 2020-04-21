@@ -20,7 +20,7 @@ public class CarController : MonoBehaviour
     public float invulnerableDelay;
     private float invulnetableTmp;
 
-    private bool boosted = false;
+    public bool boosted = false;
     public float boostDelay;
     private float boostTmp;
 
@@ -47,7 +47,7 @@ public class CarController : MonoBehaviour
         transform.position = new Vector3(-4.44f, -3.16f, 0f);
         animator = GetComponent<Animator>();
         collider = GetComponent<BoxCollider2D>();
-
+        
 
         GroundingID = Animator.StringToHash("Grounding");
         JumpedID = Animator.StringToHash("Jumped");
@@ -63,13 +63,14 @@ public class CarController : MonoBehaviour
         if (GameController.instance.lives <= 0)
         {
             animator.SetBool(isDeadID, true);
+            Debug.Log("Dead");
             //DEATH ANIMATION
         }
 
         bool isGrounding = animator.GetBool(GroundingID);
         if (isGrounding && Input.GetKey(KeyCode.Space)) //JUMP
         {
-            rig.AddForce(jumpForce * transform.up * Time.deltaTime * 10, ForceMode2D.Impulse);
+            rig.AddForce(jumpForce * transform.up * Time.deltaTime * 10, ForceMode2D.Impulse); 
         }
         if (Input.GetKey(KeyCode.Space) && GameController.instance.energy > 0 && canFly == true) //FLY
         {
@@ -98,7 +99,7 @@ public class CarController : MonoBehaviour
         float energy = GameController.instance.getEnergy();          
         if (!isGrounding)
         {
-            FindObjectOfType<AudioManager>().Play("Fly");
+            //FindObjectOfType<AudioManager>().Play("Fly");
         }
     }
     private void FixedUpdate()
@@ -136,7 +137,8 @@ public class CarController : MonoBehaviour
             switch (powerUpScript.powerUpType)
             {
                 case PowerUp.Energy:
-                    GameController.instance.giveEnergy(20);
+                    if (GameController.Instance.energy + 20 > 100) { GameController.Instance.giveEnergy(100 - GameController.Instance.energy); }
+                    else { GameController.Instance.giveEnergy(20); }
                     break;
                 case PowerUp.Boost:
                     boosted = true;
