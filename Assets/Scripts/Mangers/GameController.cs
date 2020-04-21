@@ -7,7 +7,6 @@ using System.IO;
 
 public class GameController : MonoBehaviour
 {
-    public Slider slider;
     public int lives;
     public int hiscore;
     public int record;
@@ -47,30 +46,6 @@ public class GameController : MonoBehaviour
 
     public void BeginGame()
     {
-
-    }
-    
-
-    public void DecrementLives()
-    {
-        lives--;
-
-        // Has player run out of lives?
-        if (lives < 1)
-        {
-            SceneManager.LoadScene("Game_Over");
-            // Restart the game
-            BeginGame();
-        }
-    }
-
-    public void SetSlider()
-    {
-        //slider = GameObject.FindGameObjectWithTag("canvas").GetComponent<Slider>();
-        if (GameObject.FindGameObjectWithTag("canvas"))
-        {
-            slider = (Slider)FindObjectOfType(typeof(Slider));
-        }
 
     }
 }

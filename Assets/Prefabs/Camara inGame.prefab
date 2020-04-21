@@ -1651,6 +1651,16 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 8889106061152344787}
+    - target: {fileID: 1085646699181580673, guid: 4077c596088a6b54bb9a7fda705725aa,
+        type: 3}
+      propertyPath: boostDelay
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1085646699181580673, guid: 4077c596088a6b54bb9a7fda705725aa,
+        type: 3}
+      propertyPath: invulnerableDelay
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 1085646699181580674, guid: 4077c596088a6b54bb9a7fda705725aa,
         type: 3}
       propertyPath: m_Name
