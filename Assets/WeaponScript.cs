@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WeaponScript : MonoBehaviour
 {
+    public CarController car;
     public Transform firePoint;
     public GameObject laser;
     public GameObject exlosion;
@@ -24,7 +25,7 @@ public class WeaponScript : MonoBehaviour
 
     void Update()
     {
-        energy = GameController.instance.getEnergy();
+        energy = GameController.instance.energy;
         if (Input.GetButtonDown("Fire1") && energy > 20 )
         {
             Shoot();
@@ -32,8 +33,9 @@ public class WeaponScript : MonoBehaviour
     }
     void Shoot()
     {
-        //FindObjectOfType<AudioManager>().Play("Disparo");
-        GameController.instance.useEnergy(damage);
+        FindObjectOfType<AudioManager>().Play("Disparo");
+        
+        car.useEnergy(damage);
         RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.position, firePoint.right, 30);
         StartLaserAnim();
         GameObject clone = (GameObject)Instantiate(laser, new Vector3(firePoint.position.x + 5, firePoint.position.y - 0.57f, firePoint.position.z), Quaternion.identity, player.transform);
