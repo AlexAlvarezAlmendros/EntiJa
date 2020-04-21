@@ -529,6 +529,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &528301719 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 352486431324604773, guid: e84e511f522e9464fb051a158555352e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1095682037}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &571648649
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1196,6 +1202,11 @@ PrefabInstance:
       propertyPath: jumpForce
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 7222568334203614229, guid: e84e511f522e9464fb051a158555352e,
+        type: 3}
+      propertyPath: ShieldOverlay
+      value: 
+      objectReference: {fileID: 528301719}
     - target: {fileID: 8889106061152344787, guid: e84e511f522e9464fb051a158555352e,
         type: 3}
       propertyPath: m_Name
