@@ -15,8 +15,14 @@ public class CarController : MonoBehaviour
     public float flyForce = 1f;
     public float fuelConsumedXSec = 1f;
     public float flyDelay = 4f;
-    public float flyTmp = 0f;
-    public bool canFly = false;
+    private float flyTmp = 0f;
+    private bool canFly = false;
+
+    private bool invulnerableTime = false;
+    public float invulnerableDelay;
+    private float invulnetableTmp;
+
+    private PowerUpScript powerUpScript;
 
     private Animator animator;
     private Vector2 velocity;
@@ -31,6 +37,7 @@ public class CarController : MonoBehaviour
     private int JumpedID;
     private int FlyingID;
     private int LaserShotID;
+    private int isDeadID;
 
     void Start()
     {
@@ -43,6 +50,7 @@ public class CarController : MonoBehaviour
         GroundingID = Animator.StringToHash("Grounding");
         JumpedID = Animator.StringToHash("Jumped");
         FlyingID = Animator.StringToHash("Flying");
+        isDeadID = Animator.StringToHash("isDead");
 
         rig = GetComponent<Rigidbody2D>();
         GameObject gameControllerObject = GameObject.FindWithTag("GameController");
@@ -51,7 +59,7 @@ public class CarController : MonoBehaviour
     {
         if (GameController.Instance.lives <= 0)
         {
-            isDead = true;
+            animator.SetBool(isDeadID, true);
             //DEATH ANIMATION
         }
 
@@ -71,6 +79,12 @@ public class CarController : MonoBehaviour
             flyTmp += Time.deltaTime * 10;
         }
         else if (isGrounding) { canFly = false; }
+
+        if (invulnerableTime == true && invulnetableTmp <= invulnerableDelay)
+        {
+            invulnetableTmp += Time.deltaTime * 10;
+        }
+        else { invulnerableTime = false; invulnetableTmp = 0; }
         
         float energy = GameController.Instance.getEnergy();
     }
@@ -101,10 +115,23 @@ public class CarController : MonoBehaviour
         if (coll.gameObject.tag.Equals("Enemy"))
         {
             GameController.Instance.lives--;
+            invulnerableTime = true;
         }
-        if (coll.gameObject.tag.Equals("Energy"))
+        if (coll.gameObject.tag.Equals("PowerUp"))
         {
-            GameController.Instance.setEnergy(20);
+            powerUpScript = coll.GetComponent<PowerUpScript>();
+            switch (powerUpScript.powerUpType)
+            {
+                case PowerUp.Energy:
+                    GameController.Instance.setEnergy(20);
+                    break;
+                case PowerUp.Boost:
+                    //SET fuelConsumedXSec = 0 FOR X SECONDS
+                    break;
+                case PowerUp.Shield:
+                    GameController.Instance.lives = 2;
+                    break;
+            }
         }
 
     }

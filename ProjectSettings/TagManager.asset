@@ -8,6 +8,16 @@ TagManager:
   - Enemy
   - Ground
   - PlayerAttack
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
   - 
   - 
   - 
