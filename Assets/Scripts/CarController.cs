@@ -128,6 +128,7 @@ public class CarController : MonoBehaviour
         }
         if (coll.gameObject.tag.Equals("PowerUp"))
         {
+            FindObjectOfType<AudioManager>().Play("PowerUp");
             powerUpScript = coll.GetComponent<PowerUpScript>();
             switch (powerUpScript.powerUpType)
             {

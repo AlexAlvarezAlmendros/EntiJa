@@ -236,7 +236,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 2cff6e8610dedd645ac8d376bb1d79cc, type: 3}
     volume: 0.659
     pitch: 0.1
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   - name: Disparo
     clip: {fileID: 8300000, guid: 17932e69de55b764cbed3b9046a7382a, type: 3}
