@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class CarController : MonoBehaviour
 {
-    private float speed = 5f;
+    private float speed = 2f;
     private float walkAcceleration = 75f;
     private float groundFriction = 70f;
     public float jumpForce = 4f;
@@ -123,7 +123,7 @@ public class CarController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        scoreText.text = "SCORE " + GameController.instance.hiscore;
+        scoreText.text = GameController.instance.hiscore + " km";
         bool isFlying = animator.GetBool(FlyingID);
 
         if (transform.position.x < cam.transform.position.x - 4.5f) //MAX IZQUIERDA
