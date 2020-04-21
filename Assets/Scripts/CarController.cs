@@ -14,7 +14,7 @@ public class CarController : MonoBehaviour
     public float fuelConsumedXSec = 1f;
     public float flyDelay = 4f;
     private float flyTmp = 0f;
-    private bool canFly = false;
+    public bool canFly = false;
 
     private bool invulnerableTime = false;
     public float invulnerableDelay;
