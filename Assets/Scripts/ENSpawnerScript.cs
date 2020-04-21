@@ -23,12 +23,10 @@ public class ENSpawnerScript : MonoBehaviour
     {
         nextSpawn = FirstSpawn;
         Camara = GameObject.FindWithTag("MainCamera");
-        Debug.LogError("ENS START");
     }
 
     void Update()
     {
-        Debug.LogError("ENS READY");
         if (Time.time > nextSpawn) // if time has come
         {
             whatToSpawn = Random.Range(1, 3); //define random value between 1 and 4 (5 is ecluded)

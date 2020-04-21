@@ -362,12 +362,12 @@ PrefabInstance:
     - target: {fileID: 2672181769708959242, guid: 80d95785722a3324b8bc42f68c41c9de,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 366.5
+      value: 371.1
       objectReference: {fileID: 0}
     - target: {fileID: 2672181769708959242, guid: 80d95785722a3324b8bc42f68c41c9de,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 317
+      value: 227.47
       objectReference: {fileID: 0}
     - target: {fileID: 2672181769750584488, guid: 80d95785722a3324b8bc42f68c41c9de,
         type: 3}
@@ -658,7 +658,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -241, y: 235}
+  m_AnchoredPosition: {x: -217, y: 227.47}
   m_SizeDelta: {x: 507.82776, y: 80.84323}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1193409228
@@ -674,14 +674,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.14017442, g: 0.5280533, b: 0.8490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 1e23a650bc3235449897e05db637a716, type: 3}
-    m_FontSize: 50
+    m_Font: {fileID: 12800000, guid: 234dcf20052e86342a97cfa3f7b5bec4, type: 3}
+    m_FontSize: 54
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 5
@@ -692,7 +692,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: km 090
+  m_Text: 420
 --- !u!222 &1193409229
 CanvasRenderer:
   m_ObjectHideFlags: 0
