@@ -28,6 +28,8 @@ public class CarController : MonoBehaviour
     private PowerUpScript powerUpScript;
 
     public Slider slider;
+    public Text scoreText;
+
     public Animator animator;
     private Vector2 velocity;
     private BoxCollider2D collider;
