@@ -31,10 +31,10 @@ public class WeaponScript : MonoBehaviour
     }
     void Shoot()
     {
-        GameController.Instance.quitEnergy(damage);
+        GameController.Instance.useEnergy(damage);
         RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.position, firePoint.right, 30);
         StartLaserAnim();
-        Instantiate(laser, new Vector3(firePoint.position.x + 5, firePoint.position.y, firePoint.position.z), Quaternion.identity, );
+        Instantiate(laser, new Vector3(firePoint.position.x + 5, firePoint.position.y, firePoint.position.z), Quaternion.identity, player.transform);
 
         if (hitInfo)
         {
