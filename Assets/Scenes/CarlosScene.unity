@@ -1140,7 +1140,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Enemy1Prefab
       value: 
-      objectReference: {fileID: 7756338486808616919, guid: 0ac8ce6636322844e9f6e012a0338309,
+      objectReference: {fileID: 815356806495100512, guid: 2e09415014629454a85fc326833d068c,
         type: 3}
     - target: {fileID: 8215612645767416423, guid: a1ebcba6c8d2afa4bb4559b5f6a5f56c,
         type: 3}
@@ -1151,7 +1151,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Enemy2Prefab
       value: 
-      objectReference: {fileID: 8097326279411829050, guid: 16e9578eb35ddc148a9a774c0b6aa852,
+      objectReference: {fileID: 7345785692753216666, guid: 67eaa9005f065594c84be0e2b85820a3,
         type: 3}
     m_RemovedComponents:
     - {fileID: 2151188764573482441, guid: a1ebcba6c8d2afa4bb4559b5f6a5f56c, type: 3}
