@@ -56,11 +56,6 @@ public class GameController : MonoBehaviour
         energy = energy + _energy;
         slider.value = energy;
     }
-    public void quitEnergy(float _energy)
-    {
-        energy = energy - _energy;
-        slider.value = energy;
-    }
     public void useEnergy(float _energy)
     {
         energy = energy - _energy;

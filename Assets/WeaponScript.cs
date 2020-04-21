@@ -6,6 +6,7 @@ public class WeaponScript : MonoBehaviour
 {
     public Transform firePoint;
     public GameObject laser;
+    public GameObject player;
     public GameObject enemy;
     public Animator laserAnimator;
     private bool canShoot = true;
@@ -18,6 +19,7 @@ public class WeaponScript : MonoBehaviour
     {
         laserAnimator = laser.GetComponent<Animator>();
         energy = GameController.Instance.getEnergy();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
@@ -32,6 +34,7 @@ public class WeaponScript : MonoBehaviour
         GameController.Instance.quitEnergy(damage);
         RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.position, firePoint.right, 30);
         StartLaserAnim();
+        Instantiate(laser, new Vector3(firePoint.position.x + 5, firePoint.position.y, firePoint.position.z), Quaternion.identity, );
 
         if (hitInfo)
         {
