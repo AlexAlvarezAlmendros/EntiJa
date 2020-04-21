@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Init.unity
     guid: 9483409a7b9db7f428d789221c8b7234
   - enabled: 1
+    path: Assets/Scenes/CarlosScene.unity
+    guid: ec1b1c21e0488114daedb9a8d9909053
+  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 7b4af47a8d9f8db4391bf886cfc85eb7
   - enabled: 1

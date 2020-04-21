@@ -9,7 +9,7 @@ public class GoToMainMenu : MonoBehaviour
     void Start()
     {
 
-        FindObjectOfType<AudioManager>().Play("MenuMusic");
+        //FindObjectOfType<AudioManager>().Play("MenuMusic");
         SceneManager.LoadScene("MainMenu");
     }
 

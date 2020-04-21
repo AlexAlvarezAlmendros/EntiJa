@@ -76,5 +76,16 @@ public class GameController : MonoBehaviour
             BeginGame();
         }
     }
+
+    public void SetSlider()
+    {
+        Debug.Log("Searching Slider");
+        //slider = GameObject.FindGameObjectWithTag("canvas").GetComponent<Slider>();
+        if (GameObject.FindGameObjectWithTag("canvas"))
+        {
+            slider = (Slider)FindObjectOfType(typeof(Slider));
+        }
+
+    }
 }
     

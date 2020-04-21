@@ -9,6 +9,7 @@ TagManager:
   - Ground
   - PlayerAttack
   - Laser
+  - canvas
   layers:
   - Default
   - TransparentFX

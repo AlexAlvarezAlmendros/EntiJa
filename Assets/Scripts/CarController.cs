@@ -41,6 +41,8 @@ public class CarController : MonoBehaviour
     private int isDeadID;
     private int ShieldID;
 
+    private bool once = false;
+
     void Start()
     {
         GameController.instance.giveEnergy(100);
@@ -57,9 +59,17 @@ public class CarController : MonoBehaviour
 
         rig = GetComponent<Rigidbody2D>();
         GameObject gameControllerObject = GameObject.FindWithTag("GameController");
+
+
     }
     private void Update()
     {
+        if (once == false)
+        {
+            GameController.instance.SetSlider();
+            once = true;
+        }
+
         if (GameController.instance.lives <= 0)
         {
             animator.SetBool(isDeadID, true);
