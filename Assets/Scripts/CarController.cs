@@ -47,7 +47,7 @@ public class CarController : MonoBehaviour
 
     void Start()
     {
-        FindObjectOfType<AudioManager>().Play("Disparo");
+        FindObjectOfType<AudioManager>().Play("GameMusic");
         giveEnergy(100);
         transform.position = new Vector3(-4.44f, -3.16f, 0f);
         animator = GetComponent<Animator>();
