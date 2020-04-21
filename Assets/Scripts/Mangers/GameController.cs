@@ -48,19 +48,5 @@ public class GameController : MonoBehaviour
     {
 
     }
-    
-
-    public void DecrementLives()
-    {
-        lives--;
-
-        // Has player run out of lives?
-        if (lives < 1)
-        {
-            SceneManager.LoadScene("Game_Over");
-            // Restart the game
-            BeginGame();
-        }
-    }
 }
     
