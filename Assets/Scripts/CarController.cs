@@ -41,7 +41,7 @@ public class CarController : MonoBehaviour
 
     void Start()
     {
-        GameController.Instance.setEnergy(30);
+        GameController.Instance.giveEnergy(30);
         transform.position = new Vector3(-4.44f, -3.16f, 0f);
         animator = GetComponent<Animator>();
         collider = GetComponent<BoxCollider2D>();
