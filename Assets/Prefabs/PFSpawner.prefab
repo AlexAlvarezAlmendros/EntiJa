@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 268547498152982847}
   m_Layer: 0
-  m_Name: Platforms
+  m_Name: PFSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,6 +79,25 @@ MonoBehaviour:
     type: 3}
   generationPoint: {fileID: 0}
   distanceBetween: 15
+--- !u!251 &8720426771717942828
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268547497930664925}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1001 &7803535277024154685
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -153,6 +172,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1acda83d81b822446a6abb51de796d31, type: 3}
+--- !u!1 &268547497930664925 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8066416954920615904, guid: 1acda83d81b822446a6abb51de796d31,
+    type: 3}
+  m_PrefabInstance: {fileID: 7803535277024154685}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &268547497930664924 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8066416954920615905, guid: 1acda83d81b822446a6abb51de796d31,

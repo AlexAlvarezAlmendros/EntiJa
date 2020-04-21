@@ -81,7 +81,7 @@ public class CarController : MonoBehaviour
     }
     private void Update()
     {
-        if (GameController.instance.lives <= 0)
+        if (GameController.instance.lives <= 0 || this.transform.position.y == -5.87)
         {
             animator.SetBool(isDeadID, true);
             //DEATH ANIMATION
