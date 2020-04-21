@@ -14,7 +14,7 @@ public class CarController : MonoBehaviour
     public float fuelConsumedXSec = 1f;
     public float flyDelay = 4f;
     private float flyTmp = 0f;
-    public bool canFly = false;
+    private bool canFly = false;
 
     private bool invulnerableTime = false;
     public float invulnerableDelay;
@@ -33,10 +33,13 @@ public class CarController : MonoBehaviour
     public GameObject cam;
     public GameObject explosion;
 
+    public Animator ShieldOverlay;
+
     private int GroundingID;
     private int JumpedID;
     private int FlyingID;
     private int isDeadID;
+    private int ShieldID;
 
     void Start()
     {
@@ -44,12 +47,13 @@ public class CarController : MonoBehaviour
         transform.position = new Vector3(-4.44f, -3.16f, 0f);
         animator = GetComponent<Animator>();
         collider = GetComponent<BoxCollider2D>();
-        
+
 
         GroundingID = Animator.StringToHash("Grounding");
         JumpedID = Animator.StringToHash("Jumped");
         FlyingID = Animator.StringToHash("Flying");
         isDeadID = Animator.StringToHash("isDead");
+        ShieldID = Animator.StringToHash("Active");
 
         rig = GetComponent<Rigidbody2D>();
         GameObject gameControllerObject = GameObject.FindWithTag("GameController");
@@ -65,7 +69,7 @@ public class CarController : MonoBehaviour
         bool isGrounding = animator.GetBool(GroundingID);
         if (isGrounding && Input.GetKey(KeyCode.Space)) //JUMP
         {
-            rig.AddForce(jumpForce * transform.up * Time.deltaTime * 10, ForceMode2D.Impulse); 
+            rig.AddForce(jumpForce * transform.up * Time.deltaTime * 10, ForceMode2D.Impulse);
         }
         if (Input.GetKey(KeyCode.Space) && GameController.Instance.energy > 0 && canFly == true) //FLY
         {
@@ -128,7 +132,6 @@ public class CarController : MonoBehaviour
         }
         if (coll.gameObject.tag.Equals("PowerUp"))
         {
-            FindObjectOfType<AudioManager>().Play("PowerUp");
             powerUpScript = coll.GetComponent<PowerUpScript>();
             switch (powerUpScript.powerUpType)
             {
@@ -140,6 +143,7 @@ public class CarController : MonoBehaviour
                     break;
                 case PowerUp.Shield:
                     GameController.Instance.lives = 2;
+                    ShieldOverlay.SetBool(ShieldID, true);
                     break;
             }
         }
@@ -151,6 +155,18 @@ public class CarController : MonoBehaviour
         {
             animator.SetBool(GroundingID, true);
         }
+        bool isShielded = animator.GetBool(ShieldID);
+        if (coll.gameObject.tag.Equals("Enemy"))
+        {
+            GameObject clone = (GameObject)Instantiate(explosion, this.transform.position, Quaternion.identity);
+            //Destroy(gameObject);
+            //Destroy(clone, 0.5f);
+            GameController.Instance.lives--;
+            if (isShielded)
+            {
+                ShieldOverlay.SetBool(ShieldID, false);
+            }
+        }
     }
     void OnCollisionExit2D(Collision2D coll)
     {
@@ -159,13 +175,13 @@ public class CarController : MonoBehaviour
             animator.SetBool(GroundingID, false);
         }
 
-        if (coll.gameObject.tag.Equals("Enemy"))
-        {
-            GameObject clone = (GameObject)Instantiate(explosion, this.transform.position, Quaternion.identity);
-            Destroy(gameObject);
-            Destroy(clone, 0.5f);
+        //if (coll.gameObject.tag.Equals("Enemy"))
+        //{
+        //    GameObject clone = (GameObject)Instantiate(explosion, this.transform.position, Quaternion.identity);
+        //    Destroy(gameObject);
+        //    Destroy(clone, 0.5f);
 
-        }
+        //}
     }
 
 }
