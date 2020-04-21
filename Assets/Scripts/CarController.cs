@@ -44,10 +44,12 @@ public class CarController : MonoBehaviour
     private int ShieldID;
     
     private bool once = false;
+    private bool audioplaying;
 
     void Start()
     {
         FindObjectOfType<AudioManager>().Play("GameMusic");
+        audioplaying = false;
         giveEnergy(100);
         transform.position = new Vector3(-4.44f, -3.16f, 0f);
         animator = GetComponent<Animator>();
@@ -67,6 +69,7 @@ public class CarController : MonoBehaviour
     }
     private void Update()
     {
+        
         if (once == false)
         {
             GameController.instance.SetSlider();
@@ -107,14 +110,20 @@ public class CarController : MonoBehaviour
             boostTmp += Time.deltaTime * 10;
         }
         else { boosted = false; boostTmp = 0; }
-      
-        if (!isGrounding)
+        if (!isGrounding && !audioplaying)
         {
-            //FindObjectOfType<AudioManager>().Play("Fly");
+            FindObjectOfType<AudioManager>().Play("Fly");
+            audioplaying = true;
+        }
+        else if (isGrounding && audioplaying)
+        {
+            audioplaying = false;
+            FindObjectOfType<AudioManager>().Stop("Fly");
         }
     }
     private void FixedUpdate()
     {
+        
         bool isFlying = animator.GetBool(FlyingID);
 
         if (transform.position.x < cam.transform.position.x - 3.65f)
@@ -144,6 +153,7 @@ public class CarController : MonoBehaviour
         }
         if (coll.gameObject.tag.Equals("PowerUp"))
         {
+            FindObjectOfType<AudioManager>().Play("PowerUp");
             powerUpScript = coll.GetComponent<PowerUpScript>();
             switch (powerUpScript.powerUpType)
             {
