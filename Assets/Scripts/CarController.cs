@@ -34,13 +34,9 @@ public class CarController : MonoBehaviour
     private Rigidbody2D rig;
     public GameObject cam;
 
-    public GameObject laser;
-    public Animator laserAnimator;
-
     private int GroundingID;
     private int JumpedID;
     private int FlyingID;
-    private int LaserShotID;
     private int isDeadID;
 
     void Start()
@@ -49,7 +45,7 @@ public class CarController : MonoBehaviour
         transform.position = new Vector3(-4.44f, -3.16f, 0f);
         animator = GetComponent<Animator>();
         collider = GetComponent<BoxCollider2D>();
-        laserAnimator = laser.GetComponent<Animator>();
+        
 
         GroundingID = Animator.StringToHash("Grounding");
         JumpedID = Animator.StringToHash("Jumped");
@@ -133,7 +129,7 @@ public class CarController : MonoBehaviour
             switch (powerUpScript.powerUpType)
             {
                 case PowerUp.Energy:
-                    GameController.Instance.setEnergy(20);
+                    GameController.Instance.giveEnergy(20);
                     break;
                 case PowerUp.Boost:
                     boosted = true;
