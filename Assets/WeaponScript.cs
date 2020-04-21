@@ -32,7 +32,7 @@ public class WeaponScript : MonoBehaviour
     }
     void Shoot()
     {
-        FindObjectOfType<AudioManager>().Play("Disparo");
+        //FindObjectOfType<AudioManager>().Play("Disparo");
         GameController.Instance.useEnergy(damage);
         RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.position, firePoint.right, 30);
         StartLaserAnim();
