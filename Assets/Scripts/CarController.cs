@@ -123,7 +123,7 @@ public class CarController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-
+        scoreText.text = "SCORE " + GameController.instance.hiscore;
         bool isFlying = animator.GetBool(FlyingID);
 
         if (transform.position.x < cam.transform.position.x - 4.5f) //MAX IZQUIERDA
