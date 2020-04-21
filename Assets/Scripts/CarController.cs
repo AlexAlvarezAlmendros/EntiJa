@@ -123,6 +123,7 @@ public class CarController : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        Debug.LogError("CAR READY");
         scoreText.text = GameController.instance.hiscore + " km";
         bool isFlying = animator.GetBool(FlyingID);
 

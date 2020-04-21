@@ -23,6 +23,7 @@ public class ENSpawnerScript : MonoBehaviour
     {
         nextSpawn = FirstSpawn;
         Camara = GameObject.FindWithTag("MainCamera");
+        Debug.LogError("ENS START");
     }
 
     void Update()
