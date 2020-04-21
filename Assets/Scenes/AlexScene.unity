@@ -401,6 +401,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2672181769750584487, guid: 80d95785722a3324b8bc42f68c41c9de,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2672181769750584487, guid: 80d95785722a3324b8bc42f68c41c9de,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2672181769750584487, guid: 80d95785722a3324b8bc42f68c41c9de,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2672181769750584487, guid: 80d95785722a3324b8bc42f68c41c9de,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2672181769750584488, guid: 80d95785722a3324b8bc42f68c41c9de,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -701,7 +721,7 @@ PrefabInstance:
     - target: {fileID: 7222568334203614229, guid: e84e511f522e9464fb051a158555352e,
         type: 3}
       propertyPath: jumpForce
-      value: 15
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 7222568334203614229, guid: e84e511f522e9464fb051a158555352e,
         type: 3}
