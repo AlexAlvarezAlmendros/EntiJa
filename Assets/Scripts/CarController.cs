@@ -26,6 +26,7 @@ public class CarController : MonoBehaviour
     private float boostTmp;
 
     private PowerUpScript powerUpScript;
+    
 
     public Slider slider;
     public Text scoreText;
@@ -38,6 +39,7 @@ public class CarController : MonoBehaviour
     private Rigidbody2D rig;
     public GameObject cam;
     public GameObject explosion;
+    public Transform rayPoint;
 
     public GameObject PrefabEnemySP;
     public GameObject PrefabPowerUpSp;
@@ -92,22 +94,14 @@ public class CarController : MonoBehaviour
     }
     private void Update()
     {
-        RaycastHit2D hitInfo = Physics2D.Raycast(rig.position, new Vector2(rig.position.x,rig.position.y - 1));
-        if (hitInfo)
-        {
-            PlatformScript platform = hitInfo.transform.GetComponent<PlatformScript>();
-            if (platform != null)
-            {
-                Debug.Log(platform.tag);
 
-            }
-        }
+        animator.SetBool(GroundingID, Driving()); 
         if (GameController.instance.isrecord == true) { highscoreText.SetActive(true); }
 
         carHP.text = GameController.instance.lives.ToString();
 
         eBarAnimator.SetBool("Boosted", boosted);
-        float delta = Time.deltaTime * 100;
+        float delta = Time.deltaTime * 10;
         if (GameController.instance.lives <= 0 || this.transform.position.y == -5.87)
         {
             animator.SetBool(isDeadID, true);
@@ -118,7 +112,7 @@ public class CarController : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("MenuMusic");
             SceneManager.LoadScene("GameOver");
         }
-
+        Driving();
         bool isGrounding = animator.GetBool(GroundingID);
         if (isGrounding && Input.GetKey(KeyCode.Space)) //JUMP
         {
@@ -235,13 +229,6 @@ public class CarController : MonoBehaviour
             }
         }
     }
-    void OnCollisionExit2D(Collision2D coll)
-    {
-        if (coll.gameObject.tag.Equals("Ground"))
-        {
-            animator.SetBool(GroundingID, false);
-        }
-    }
 
     public void giveEnergy(float _energy)
     {
@@ -252,5 +239,28 @@ public class CarController : MonoBehaviour
     {
         GameController.instance.energy = GameController.instance.energy - _energy;
         slider.value = GameController.instance.energy;
+    }
+
+    private bool Driving()
+    {
+        bool driving = false;
+        Vector2 endPos = rayPoint.position + Vector3.down * 1.5f;
+        RaycastHit2D hit = Physics2D.Linecast(rayPoint.position, endPos, 1 << LayerMask.NameToLayer("Ground"));
+        if (hit.collider != null){
+            if (hit.collider.gameObject.CompareTag("Ground"))
+            {
+                Debug.Log("grounding");
+                driving = true;
+                return driving;
+            }
+            else
+            {
+                Debug.Log("flying");
+                driving = false;
+                return driving;
+            }
+        }
+        return driving;
+
     }
 }
