@@ -1166,6 +1166,7 @@ GameObject:
   - component: {fileID: 1483495271}
   - component: {fileID: 1483495273}
   - component: {fileID: 1483495272}
+  - component: {fileID: 1483495274}
   m_Layer: 5
   m_Name: HIGHSCORE
   m_TagString: Untagged
@@ -1189,8 +1190,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -34, y: 214.39}
-  m_SizeDelta: {x: 320.27423, y: 86.36974}
+  m_AnchoredPosition: {x: -0.00000095367, y: 209.58}
+  m_SizeDelta: {x: 414.02374, y: 95.99784}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1483495272
 MonoBehaviour:
@@ -1212,18 +1213,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 0fe26eae9f6da6c45b38572aa95cfa22, type: 3}
-    m_FontSize: 50
+    m_FontSize: 40
     m_FontStyle: 1
-    m_BestFit: 0
-    m_MinSize: 4
+    m_BestFit: 1
+    m_MinSize: 30
     m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: HIGHSCORE
+    m_LineSpacing: 2
+  m_Text: HIGHSCORE!!!
 --- !u!222 &1483495273
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1232,6 +1233,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1483495270}
   m_CullTransparentMesh: 0
+--- !u!95 &1483495274
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1483495270}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 058aa7a25b7809c498c960c422984070, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1535858269
 GameObject:
   m_ObjectHideFlags: 0
@@ -1439,6 +1459,11 @@ PrefabInstance:
       propertyPath: eBarAnimator
       value: 
       objectReference: {fileID: 497482804}
+    - target: {fileID: 7222568334203614229, guid: e84e511f522e9464fb051a158555352e,
+        type: 3}
+      propertyPath: highscoreText
+      value: 
+      objectReference: {fileID: 1483495272}
     - target: {fileID: 7222568334203614231, guid: e84e511f522e9464fb051a158555352e,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
