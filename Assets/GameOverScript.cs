@@ -11,9 +11,4 @@ public class GameOverScript : MonoBehaviour
     {
         text.text = GameController.instance.hiscore + "km";
     }
-
-    void Update()
-    {
-        
-    }
 }
