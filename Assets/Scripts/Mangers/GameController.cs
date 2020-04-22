@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
     public int lives;
     public int hiscore;
     public int record;
+    public bool isrecord;
     public float energy;
     public static GameController instance { get; private set; }
 
