@@ -249,13 +249,11 @@ public class CarController : MonoBehaviour
         if (hit.collider != null){
             if (hit.collider.gameObject.CompareTag("Ground"))
             {
-                Debug.Log("grounding");
                 driving = true;
                 return driving;
             }
             else
             {
-                Debug.Log("flying");
                 driving = false;
                 return driving;
             }

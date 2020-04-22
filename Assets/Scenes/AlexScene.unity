@@ -317,7 +317,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 0, b: 0.8608513, a: 1}
-  m_Intensity: 0.36
+  m_Intensity: 0.32
   m_LightVolumeOpacity: 0.556
   m_ApplyToSortingLayers: 1559cdb5
   m_LightCookieSprite: {fileID: 0}
@@ -334,8 +334,8 @@ MonoBehaviour:
   m_PointLightQuality: 1
   m_ShapeLightParametricSides: 48
   m_ShapeLightParametricAngleOffset: 0
-  m_ShapeLightParametricRadius: 0.9
-  m_ShapeLightFalloffSize: 0.63
+  m_ShapeLightParametricRadius: 0
+  m_ShapeLightFalloffSize: 4.26
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
   - {x: -0.5, y: -0.5, z: 0}
@@ -1635,7 +1635,27 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+      objectReference: {fileID: 2100000, guid: a3a3cf7f005f0644f870a010939dfc7e, type: 2}
+    - target: {fileID: 352486431324604772, guid: e84e511f522e9464fb051a158555352e,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 4.736842
+      objectReference: {fileID: 0}
+    - target: {fileID: 352486431324604772, guid: e84e511f522e9464fb051a158555352e,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 4.736842
+      objectReference: {fileID: 0}
+    - target: {fileID: 352486431324604772, guid: e84e511f522e9464fb051a158555352e,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3001303400839036781, guid: e84e511f522e9464fb051a158555352e,
+        type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7222568334203614225, guid: e84e511f522e9464fb051a158555352e,
         type: 3}
       propertyPath: car
@@ -1778,7 +1798,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+      objectReference: {fileID: 2100000, guid: 4ecb7710eaf62ae40a4f6a5070f38468, type: 2}
     - target: {fileID: 8889106060217640871, guid: e84e511f522e9464fb051a158555352e,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
