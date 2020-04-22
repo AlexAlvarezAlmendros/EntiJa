@@ -4,21 +4,19 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public class FileCheck : MonoBehaviour
 {
-    public int? savedScore = 1;
+    public int? savedScore;
     public int savedRecord;
 
     void Start()
     {
-        GameController.instance.record = savedScore ?? default(int);
-        savedRecord = savedScore ?? default(int);
-        LoadFile();
-        Debug.Log("Loaded");
-        if (savedScore < GameController.instance.hiscore)
-        {
-            Debug.Log("saved is lower");
-            GameController.instance.record = GameController.instance.hiscore;
-            SaveFile();
-        }
+        //LoadFile();
+        //Debug.Log("Loaded");
+        //if (savedScore < GameController.instance.hiscore)
+        //{
+        //    Debug.Log("saved is lower");
+        //    GameController.instance.record = GameController.instance.hiscore;
+        //    SaveFile();
+        //}
     }
 
     public void LoadFile()

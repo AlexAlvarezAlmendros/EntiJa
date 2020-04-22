@@ -29,7 +29,7 @@ public class CarController : MonoBehaviour
 
     public Slider slider;
     public Text scoreText;
-    public Text highscoreText;
+    public GameObject highscoreText;
 
     public Animator animator;
     public Animator eBarAnimator;
@@ -87,10 +87,13 @@ public class CarController : MonoBehaviour
         Instantiate(PrefabEnemySP, this.transform.position, Quaternion.identity);
         Instantiate(PrefabPowerUpSp, this.transform.position, Quaternion.identity);
         //Instantiate(PrefabPlatformSP, this.transform.position, Quaternion.identity);
+
+        highscoreText.SetActive(false);
+        GameController.instance.isrecord = false;
     }
     private void Update()
     {
-        
+        if (GameController.instance.isrecord == true) { highscoreText.SetActive(true); }
         switch (GameController.instance.lives)
         {
             case 1:

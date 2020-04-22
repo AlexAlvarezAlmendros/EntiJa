@@ -40,7 +40,7 @@ public class GameController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (hiscore > record) { isrecord = true; }
+        if (hiscore > record) { isrecord = true; record = hiscore; }
         if (GameON == true)
         {
             hiscore += 1;
