@@ -12,7 +12,7 @@ public class GameController : MonoBehaviour
     public int lives;
 
     public int hiscore = 0;
-    public int record = 1;
+    public int record;
     public bool isrecord;
 
     public float energy;
