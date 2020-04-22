@@ -56,6 +56,7 @@ public class CarController : MonoBehaviour
     private int isDeadID;
     private int ShieldID;
     private int BoostedID;
+    private int BoostedEndID;
 
     private bool once = false;
     private bool audioplaying;
@@ -77,6 +78,7 @@ public class CarController : MonoBehaviour
         isDeadID = Animator.StringToHash("isDead");
         ShieldID = Animator.StringToHash("Active");
         BoostedID = Animator.StringToHash("Boosted");
+        BoostedEndID = Animator.StringToHash("Exit");
 
         rig = GetComponent<Rigidbody2D>();
         GameObject gameControllerObject = GameObject.FindWithTag("GameController");
@@ -139,8 +141,12 @@ public class CarController : MonoBehaviour
         if (boosted == true && boostTmp <= boostDelay)
         {
             boostTmp += Time.deltaTime * 10;
+            if (boostTmp > (boostDelay - boostDelay / 4))
+            {
+                eBarAnimator.SetBool(BoostedEndID, true);
+            }
         }
-        else { boosted = false; boostTmp = 0; }
+        else { boosted = false; boostTmp = 0; eBarAnimator.SetBool(BoostedEndID, false); }
         if (!isGrounding && !audioplaying)
         {
             FindObjectOfType<AudioManager>().Play("Fly");
