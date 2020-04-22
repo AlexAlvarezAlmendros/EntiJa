@@ -9,9 +9,9 @@ public class FileCheck : MonoBehaviour
     void Start()
     {
         LoadFile();
-        if (savedScore < GameManager.Instance.score)
+        if (savedScore < GameController.instance.hiscore)
         {
-            GameManager.Instance.record = true;
+            GameController.instance.record = savedScore ?? default(int);
             SaveFile();
         }
     }
@@ -35,9 +35,8 @@ public class FileCheck : MonoBehaviour
         else
         {
             Debug.LogError("File not found");
-            GameManager.Instance.record = true;
+            GameController.instance.record = GameController.instance.hiscore;
             SaveFile();
-            savedScore = GameManager.Instance.score;
         }
     }
 
@@ -47,7 +46,7 @@ public class FileCheck : MonoBehaviour
         BinaryFormatter formatter = new BinaryFormatter();
         FileStream file = new FileStream(destination, FileMode.Create);
 
-        formatter.Serialize(file, GameManager.Instance.score);
+        formatter.Serialize(file, GameController.instance.hiscore);
         file.Close();
     }
 }
