@@ -44,8 +44,7 @@ public class CarController : MonoBehaviour
     public GameObject PrefabPlatformSP;
 
     public GameObject car1;
-    public GameObject car2;
-    public GameObject car3;
+    public Text carHP;
 
     public Animator ShieldOverlay;
 
@@ -94,24 +93,9 @@ public class CarController : MonoBehaviour
     private void Update()
     {
         if (GameController.instance.isrecord == true) { highscoreText.SetActive(true); }
-        switch (GameController.instance.lives)
-        {
-            case 1:
-                car1.SetActive(true);
-                car2.SetActive(false);
-                car3.SetActive(false);
-                break;
-            case 2:
-                car1.SetActive(true);
-                car2.SetActive(true);
-                car3.SetActive(false);
-                break;
-            case 3:
-                car1.SetActive(true);
-                car2.SetActive(true);
-                car3.SetActive(true);
-                break;
-        }
+
+        carHP.text = GameController.instance.lives.ToString();
+
         eBarAnimator.SetBool("Boosted", boosted);
         float delta = Time.deltaTime * 100;
         if (GameController.instance.lives <= 0 || this.transform.position.y == -5.87)
