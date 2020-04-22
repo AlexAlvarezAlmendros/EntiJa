@@ -7,9 +7,11 @@ using UnityEngine.SceneManagement;
 
 public class CarController : MonoBehaviour
 {
+    //VARIABLES
     private float speed = 2f;
     private float walkAcceleration = 75f;
     private float groundFriction = 70f;
+
     public float jumpForce = 4f;
     public float flyForce = 1f;
     public float fuelConsumedXSec = 1f;
@@ -26,30 +28,33 @@ public class CarController : MonoBehaviour
     private float boostTmp;
 
     private PowerUpScript powerUpScript;
-    
 
-    public Slider slider;
-    public Text scoreText;
-    public GameObject highscoreText;
-
-    public Animator animator;
-    public Animator eBarAnimator;
-    private Vector2 velocity;
+    //GETTERS
+    private Animator animator;
     private BoxCollider2D collider;
     private Rigidbody2D rig;
+    private Vector2 velocity;
+
     public GameObject cam;
     public GameObject explosion;
     public Transform rayPoint;
 
+    //PREFABS SPAWNERS
     public GameObject PrefabEnemySP;
     public GameObject PrefabPowerUpSp;
-    public GameObject PrefabPlatformSP;
 
+    //HUD - UI
     public GameObject car1;
     public Text carHP;
-
     public Animator ShieldOverlay;
 
+    public Slider slider;
+    public Animator eBarAnimator;
+
+    public Text scoreText;
+    public GameObject highscoreText;
+
+    //ANIMATION IDS
     private int GroundingID;
     private int JumpedID;
     private int FlyingID;
@@ -58,20 +63,30 @@ public class CarController : MonoBehaviour
     private int BoostedID;
     private int BoostedEndID;
 
-    private bool once = false;
+    //AUDIO
     private bool audioplaying;
 
     void Start()
     {
+        //SETTERS
         GameController.instance.lives = 3;
         FindObjectOfType<AudioManager>().Play("GameMusic");
         audioplaying = false;
         giveEnergy(100);
         transform.position = new Vector3(-3.877f, -3.883f, 0f);
+
+        GameController.instance.GameON = true;
+        GameController.instance.hiscore = 0;
+        GameController.instance.energy = 100;
+        highscoreText.SetActive(false);
+        GameController.instance.isrecord = false;
+
+        //GETTERS
         animator = GetComponent<Animator>();
         collider = GetComponent<BoxCollider2D>();
+        rig = GetComponent<Rigidbody2D>();
 
-
+        //ANIAMTION IDS
         GroundingID = Animator.StringToHash("Grounding");
         JumpedID = Animator.StringToHash("Jumped");
         FlyingID = Animator.StringToHash("Flying");
@@ -80,23 +95,13 @@ public class CarController : MonoBehaviour
         BoostedID = Animator.StringToHash("Boosted");
         BoostedEndID = Animator.StringToHash("Exit");
 
-        rig = GetComponent<Rigidbody2D>();
-        GameObject gameControllerObject = GameObject.FindWithTag("GameController");
-
-        GameController.instance.GameON = true;
-        GameController.instance.hiscore = 0;
-        GameController.instance.energy = 100;
-
+        //SPAWNERS
         Instantiate(PrefabEnemySP, this.transform.position, Quaternion.identity);
         Instantiate(PrefabPowerUpSp, this.transform.position, Quaternion.identity);
-        //Instantiate(PrefabPlatformSP, this.transform.position, Quaternion.identity);
-
-        highscoreText.SetActive(false);
-        GameController.instance.isrecord = false;
     }
+
     private void Update()
     {
-
         animator.SetBool(GroundingID, Driving()); 
         if (GameController.instance.isrecord == true) { highscoreText.SetActive(true); }
 
@@ -125,20 +130,20 @@ public class CarController : MonoBehaviour
             if (boosted == false) { useEnergy(fuelConsumedXSec); }
             rig.velocity = Vector2.up * flyForce;
         }
-        if (flyTmp >= flyDelay) { canFly = true; flyTmp = 0; }
-        else if (!isGrounding && canFly == false)
+        if (flyTmp >= flyDelay) { canFly = true; flyTmp = 0; } 
+        else if (!isGrounding && canFly == false) 
         {
             flyTmp += Time.deltaTime * 10;
         }
         else if (isGrounding) { canFly = false; }
 
-        if (invulnerableTime == true && invulnetableTmp <= invulnerableDelay)
+        if (invulnerableTime == true && invulnetableTmp <= invulnerableDelay) //INVULNERABLITY
         {
             invulnetableTmp += Time.deltaTime * 10;
         }
         else { invulnerableTime = false; invulnetableTmp = 0; }
 
-        if (boosted == true && boostTmp <= boostDelay)
+        if (boosted == true && boostTmp <= boostDelay) //BOOST
         {
             boostTmp += Time.deltaTime * 10;
             if (boostTmp > (boostDelay - boostDelay / 4))
@@ -147,7 +152,8 @@ public class CarController : MonoBehaviour
             }
         }
         else { boosted = false; boostTmp = 0; eBarAnimator.SetBool(BoostedEndID, false); }
-        if (!isGrounding && !audioplaying)
+
+        if (!isGrounding && !audioplaying) //AUDIO FLY
         {
             FindObjectOfType<AudioManager>().Play("Fly");
             audioplaying = true;
@@ -220,7 +226,7 @@ public class CarController : MonoBehaviour
         }
 
         bool isShielded = ShieldOverlay.GetBool(ShieldID);
-        if (coll.gameObject.tag.Equals("Enemy") && invulnerableTime == false)
+        if (coll.gameObject.tag.Equals("Enemy") && invulnerableTime == false) //DAMAGE
         {
             if (!isShielded)
             {
