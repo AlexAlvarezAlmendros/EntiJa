@@ -29,6 +29,7 @@ public class CarController : MonoBehaviour
 
     public Slider slider;
     public Text scoreText;
+    public Text highscoreText;
 
     public Animator animator;
     public Animator eBarAnimator;
