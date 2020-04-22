@@ -94,6 +94,7 @@ public class CarController : MonoBehaviour
             GameController.instance.lives = 1;
             FindObjectOfType<AudioManager>().Stop("Fly");
             FindObjectOfType<AudioManager>().Stop("GameMusic");
+            FindObjectOfType<AudioManager>().Play("MenuMusic");
             SceneManager.LoadScene("GameOver");
         }
 
