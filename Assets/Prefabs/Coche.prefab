@@ -87,7 +87,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5408974722edabd4f9a690aabbdfb3a1, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -141,13 +141,17 @@ MonoBehaviour:
   boosted: 0
   slider: {fileID: 0}
   scoreText: {fileID: 0}
+  highscoreText: {fileID: 0}
   animator: {fileID: 0}
+  eBarAnimator: {fileID: 0}
   cam: {fileID: 0}
   explosion: {fileID: 7287646316310371301, guid: fce7479a3857fb347871c37eb2779f6a,
     type: 3}
   PrefabEnemySP: {fileID: 0}
   PrefabPowerUpSp: {fileID: 0}
   PrefabPlatformSP: {fileID: 0}
+  car1: {fileID: 0}
+  carHP: {fileID: 0}
   ShieldOverlay: {fileID: 8056661296965508337}
 --- !u!114 &1085646699181580677
 MonoBehaviour:
@@ -183,7 +187,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 0a3fe5eac109c054689a8211808ce2e5, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -197,7 +201,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1085646699181580674}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 0a3fe5eac109c054689a8211808ce2e5, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -223,7 +227,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1085646699181580674}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 0a3fe5eac109c054689a8211808ce2e5, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
