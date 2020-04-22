@@ -347,7 +347,7 @@ PrefabInstance:
     - target: {fileID: 8238808544109622568, guid: 832b1e948648c8d49afa56c7957a9f10,
         type: 3}
       propertyPath: sounds.Array.size
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8238808544109622568, guid: 832b1e948648c8d49afa56c7957a9f10,
         type: 3}
@@ -362,7 +362,7 @@ PrefabInstance:
     - target: {fileID: 8238808544109622568, guid: 832b1e948648c8d49afa56c7957a9f10,
         type: 3}
       propertyPath: sounds.Array.data[0].volume
-      value: 0.143
+      value: 0.142
       objectReference: {fileID: 0}
     - target: {fileID: 8238808544109622568, guid: 832b1e948648c8d49afa56c7957a9f10,
         type: 3}
@@ -382,7 +382,7 @@ PrefabInstance:
     - target: {fileID: 8238808544109622568, guid: 832b1e948648c8d49afa56c7957a9f10,
         type: 3}
       propertyPath: sounds.Array.data[0].pitch
-      value: 0.1
+      value: 0.31
       objectReference: {fileID: 0}
     - target: {fileID: 8238808544109622568, guid: 832b1e948648c8d49afa56c7957a9f10,
         type: 3}
@@ -442,7 +442,7 @@ PrefabInstance:
     - target: {fileID: 8238808544109622568, guid: 832b1e948648c8d49afa56c7957a9f10,
         type: 3}
       propertyPath: sounds.Array.data[7].volume
-      value: 0.349
+      value: 0.469
       objectReference: {fileID: 0}
     - target: {fileID: 8238808544109622568, guid: 832b1e948648c8d49afa56c7957a9f10,
         type: 3}
@@ -472,7 +472,7 @@ PrefabInstance:
     - target: {fileID: 8238808544109622568, guid: 832b1e948648c8d49afa56c7957a9f10,
         type: 3}
       propertyPath: sounds.Array.data[9].name
-      value: Button
+      value: ButtonSound
       objectReference: {fileID: 0}
     - target: {fileID: 8238808544109622568, guid: 832b1e948648c8d49afa56c7957a9f10,
         type: 3}
@@ -499,6 +499,36 @@ PrefabInstance:
       propertyPath: sounds.Array.data[3].clip
       value: 
       objectReference: {fileID: 8300000, guid: 1f5e8128d557a4a418441cada14ee40e, type: 3}
+    - target: {fileID: 8238808544109622568, guid: 832b1e948648c8d49afa56c7957a9f10,
+        type: 3}
+      propertyPath: sounds.Array.data[4].volume
+      value: 0.094
+      objectReference: {fileID: 0}
+    - target: {fileID: 8238808544109622568, guid: 832b1e948648c8d49afa56c7957a9f10,
+        type: 3}
+      propertyPath: sounds.Array.data[4].pitch
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 8238808544109622568, guid: 832b1e948648c8d49afa56c7957a9f10,
+        type: 3}
+      propertyPath: sounds.Array.data[10].name
+      value: PutiMuerte
+      objectReference: {fileID: 0}
+    - target: {fileID: 8238808544109622568, guid: 832b1e948648c8d49afa56c7957a9f10,
+        type: 3}
+      propertyPath: sounds.Array.data[10].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: f9855807f6ed80b48852c897e9f2cce1, type: 3}
+    - target: {fileID: 8238808544109622568, guid: 832b1e948648c8d49afa56c7957a9f10,
+        type: 3}
+      propertyPath: sounds.Array.data[10].volume
+      value: 0.349
+      objectReference: {fileID: 0}
+    - target: {fileID: 8238808544109622568, guid: 832b1e948648c8d49afa56c7957a9f10,
+        type: 3}
+      propertyPath: sounds.Array.data[10].pitch
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8238808544109622569, guid: 832b1e948648c8d49afa56c7957a9f10,
         type: 3}
       propertyPath: m_Name

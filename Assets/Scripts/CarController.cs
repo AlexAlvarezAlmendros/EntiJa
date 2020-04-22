@@ -228,6 +228,7 @@ public class CarController : MonoBehaviour
         bool isShielded = ShieldOverlay.GetBool(ShieldID);
         if (coll.gameObject.tag.Equals("Enemy") && invulnerableTime == false) //DAMAGE
         {
+            FindObjectOfType<AudioManager>().Play("Explosion");
             if (!isShielded)
             {
                 invulnerableTime = true;

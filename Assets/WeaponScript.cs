@@ -48,9 +48,11 @@ public class WeaponScript : MonoBehaviour
             Enemy1Script enemy2 = hitInfo.transform.GetComponent<Enemy1Script>();
             if (enemy != null)
             {
+                FindObjectOfType<AudioManager>().Play("RobotDeath");
                 enemy.takeDamage(damage);
             }else if (enemy2 != null )
             {
+                FindObjectOfType<AudioManager>().Play("PutiMuerte");
                 enemy2.takeDamage(damage);
             }
             GameObject cloneexplosion = (GameObject)Instantiate(exlosion, hitInfo.point, Quaternion.identity);

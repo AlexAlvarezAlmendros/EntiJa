@@ -6,14 +6,19 @@ public class CameraScript : MonoBehaviour
 {
     public GameObject Player;
     public float moveSpeed;
-    private float actualMoveSpeed;
+    public float actualMoveSpeed;
 
     private void Start()
     {
-        actualMoveSpeed = moveSpeed / 100;
+
+    actualMoveSpeed = moveSpeed / 100;
     }
     private void Update()
     {
+        
+        if (actualMoveSpeed < 0.2f) {
+            actualMoveSpeed += 0.000001f;
+        } 
         float delta = Time.deltaTime * 100;
         transform.position = new Vector3(transform.position.x + actualMoveSpeed * delta, transform.position.y, transform.position.z);
     }
