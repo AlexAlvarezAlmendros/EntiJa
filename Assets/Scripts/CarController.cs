@@ -43,6 +43,11 @@ public class CarController : MonoBehaviour
     public GameObject PrefabPowerUpSp;
     public GameObject PrefabPlatformSP;
 
+    public GameObject car1;
+    public GameObject car2;
+    public GameObject car3;
+    public GameObject Shield;
+
     public Animator ShieldOverlay;
 
     private int GroundingID;
@@ -57,6 +62,7 @@ public class CarController : MonoBehaviour
 
     void Start()
     {
+        GameController.instance.lives = 3;
         FindObjectOfType<AudioManager>().Play("GameMusic");
         audioplaying = false;
         giveEnergy(100);
@@ -85,6 +91,25 @@ public class CarController : MonoBehaviour
     }
     private void Update()
     {
+        
+        switch (GameController.instance.lives)
+        {
+            case 1:
+                car1.SetActive(true);
+                car2.SetActive(false);
+                car3.SetActive(false);
+                break;
+            case 2:
+                car1.SetActive(true);
+                car2.SetActive(true);
+                car3.SetActive(false);
+                break;
+            case 3:
+                car1.SetActive(true);
+                car2.SetActive(true);
+                car3.SetActive(true);
+                break;
+        }
         eBarAnimator.SetBool("Boosted", boosted);
         float delta = Time.deltaTime * 100;
         if (GameController.instance.lives <= 0 || this.transform.position.y == -5.87)
@@ -92,7 +117,6 @@ public class CarController : MonoBehaviour
             animator.SetBool(isDeadID, true);
             //DEATH ANIMATION
             GameController.instance.GameON = false;
-            GameController.instance.lives = 1;
             FindObjectOfType<AudioManager>().Stop("Fly");
             FindObjectOfType<AudioManager>().Stop("GameMusic");
             FindObjectOfType<AudioManager>().Play("MenuMusic");
@@ -185,7 +209,7 @@ public class CarController : MonoBehaviour
                     boosted = true;
                     break;
                 case PowerUp.Shield:
-                    GameController.instance.lives = 2;
+                    Shield.SetActive(true);
                     ShieldOverlay.SetBool(ShieldID, true);
                     break;
             }
@@ -203,13 +227,16 @@ public class CarController : MonoBehaviour
         bool isShielded = ShieldOverlay.GetBool(ShieldID);
         if (coll.gameObject.tag.Equals("Enemy") && invulnerableTime == false)
         {
-            invulnerableTime = true;
-            GameObject clone = (GameObject)Instantiate(explosion, this.transform.position, Quaternion.identity);
-            Destroy(clone, 1.0f);
-            GameController.instance.lives--;
-
+            if (!isShielded)
+            {
+                invulnerableTime = true;
+                GameObject clone = (GameObject)Instantiate(explosion, this.transform.position, Quaternion.identity);
+                Destroy(clone, 1.0f);
+                GameController.instance.lives--;
+            }
             if (isShielded)
             {
+                Shield.SetActive(false);
                 ShieldOverlay.SetBool(ShieldID, false);
             }
         }
