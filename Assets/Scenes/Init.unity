@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9ddac9e52aeb4d4394f246222f6a570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asd: 0
+  savedRecord: 0
 --- !u!1001 &608510552
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -357,7 +357,7 @@ PrefabInstance:
     - target: {fileID: 8238808544109622568, guid: 832b1e948648c8d49afa56c7957a9f10,
         type: 3}
       propertyPath: sounds.Array.data[0].volume
-      value: 0.238
+      value: 0.143
       objectReference: {fileID: 0}
     - target: {fileID: 8238808544109622568, guid: 832b1e948648c8d49afa56c7957a9f10,
         type: 3}
@@ -379,6 +379,11 @@ PrefabInstance:
       propertyPath: sounds.Array.data[0].pitch
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 8238808544109622568, guid: 832b1e948648c8d49afa56c7957a9f10,
+        type: 3}
+      propertyPath: sounds.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7463981efb3530b4e80347967c604782, type: 3}
     - target: {fileID: 8238808544109622569, guid: 832b1e948648c8d49afa56c7957a9f10,
         type: 3}
       propertyPath: m_Name

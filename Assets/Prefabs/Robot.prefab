@@ -72,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1788267663
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 81892385d6972e246b3e448f0922d7d5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -121,7 +121,7 @@ MonoBehaviour:
   parentObj: {fileID: 7345785692753216666}
   Camara: {fileID: 0}
   EnemyHP: 1
-  enemySpeed: 5
+  enemySpeed: 15
 --- !u!50 &3728323796829510095
 Rigidbody2D:
   serializedVersion: 4
