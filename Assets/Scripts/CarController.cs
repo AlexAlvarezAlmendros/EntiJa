@@ -92,6 +92,16 @@ public class CarController : MonoBehaviour
     }
     private void Update()
     {
+        RaycastHit2D hitInfo = Physics2D.Raycast(rig.position, new Vector2(rig.position.x,rig.position.y - 1));
+        if (hitInfo)
+        {
+            PlatformScript platform = hitInfo.transform.GetComponent<PlatformScript>();
+            if (platform != null)
+            {
+                Debug.Log(platform.tag);
+
+            }
+        }
         if (GameController.instance.isrecord == true) { highscoreText.SetActive(true); }
 
         carHP.text = GameController.instance.lives.ToString();
