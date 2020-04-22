@@ -1666,6 +1666,21 @@ PrefabInstance:
       propertyPath: highscoreText
       value: 
       objectReference: {fileID: 1483495272}
+    - target: {fileID: 7222568334203614229, guid: e84e511f522e9464fb051a158555352e,
+        type: 3}
+      propertyPath: car1
+      value: 
+      objectReference: {fileID: 1210840980}
+    - target: {fileID: 7222568334203614229, guid: e84e511f522e9464fb051a158555352e,
+        type: 3}
+      propertyPath: car2
+      value: 
+      objectReference: {fileID: 1786178566}
+    - target: {fileID: 7222568334203614229, guid: e84e511f522e9464fb051a158555352e,
+        type: 3}
+      propertyPath: car3
+      value: 
+      objectReference: {fileID: 1072245059}
     - target: {fileID: 7222568334203614231, guid: e84e511f522e9464fb051a158555352e,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

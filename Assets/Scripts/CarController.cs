@@ -46,7 +46,6 @@ public class CarController : MonoBehaviour
     public GameObject car1;
     public GameObject car2;
     public GameObject car3;
-    public GameObject Shield;
 
     public Animator ShieldOverlay;
 
@@ -209,7 +208,6 @@ public class CarController : MonoBehaviour
                     boosted = true;
                     break;
                 case PowerUp.Shield:
-                    Shield.SetActive(true);
                     ShieldOverlay.SetBool(ShieldID, true);
                     break;
             }
@@ -236,7 +234,6 @@ public class CarController : MonoBehaviour
             }
             if (isShielded)
             {
-                Shield.SetActive(false);
                 ShieldOverlay.SetBool(ShieldID, false);
             }
         }
