@@ -7,15 +7,17 @@ using System.IO;
 
 public class GameController : MonoBehaviour
 {
-    public int lives;
-    public int hiscore;
-    public int record;
-    public bool isrecord;
-    public float energy;
     public static GameController instance { get; private set; }
 
+    public int lives;
+
+    public int hiscore = 0;
+    public int record = 1;
+    public bool isrecord;
+
+    public float energy;
+
     public bool GameON;
-    
 
     void Awake()
     {
@@ -28,17 +30,6 @@ public class GameController : MonoBehaviour
             return;
         }
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        //AudioManager.Instance.Play(GameMusic);
-        StreamReader reader = new StreamReader("Hiscore.txt");
-        string hiscorestring = reader.ReadLine();
-        hiscore = int.Parse(hiscorestring);
-        reader.Close();
-        BeginGame();
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -49,17 +40,11 @@ public class GameController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (hiscore > record) { isrecord = true; }
         if (GameON == true)
         {
             hiscore += 1;
         }
     }
-
-    public void BeginGame()
-    {
-
-    }
-
-
 }
     

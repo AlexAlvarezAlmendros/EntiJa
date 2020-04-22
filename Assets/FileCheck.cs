@@ -5,12 +5,16 @@ using System.Runtime.Serialization.Formatters.Binary;
 public class FileCheck : MonoBehaviour
 {
     public int? savedScore;
+    public int savedRecord;
 
     void Start()
     {
         LoadFile();
+        Debug.Log("Loaded");
         if (savedScore < GameController.instance.hiscore)
         {
+            Debug.Log("saved is lower");
+            savedRecord = savedScore ?? default(int);
             GameController.instance.record = savedScore ?? default(int);
             SaveFile();
         }
