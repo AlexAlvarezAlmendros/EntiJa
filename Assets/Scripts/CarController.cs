@@ -31,6 +31,7 @@ public class CarController : MonoBehaviour
     public Text scoreText;
 
     public Animator animator;
+    public Animator eBarAnimator;
     private Vector2 velocity;
     private BoxCollider2D collider;
     private Rigidbody2D rig;
@@ -48,6 +49,7 @@ public class CarController : MonoBehaviour
     private int FlyingID;
     private int isDeadID;
     private int ShieldID;
+    private int BoostedID;
 
     private bool once = false;
     private bool audioplaying;
@@ -67,6 +69,7 @@ public class CarController : MonoBehaviour
         FlyingID = Animator.StringToHash("Flying");
         isDeadID = Animator.StringToHash("isDead");
         ShieldID = Animator.StringToHash("Active");
+        BoostedID = Animator.StringToHash("Boosted");
 
         rig = GetComponent<Rigidbody2D>();
         GameObject gameControllerObject = GameObject.FindWithTag("GameController");
@@ -81,6 +84,7 @@ public class CarController : MonoBehaviour
     }
     private void Update()
     {
+        eBarAnimator.SetBool("Boosted", boosted);
         float delta = Time.deltaTime * 100;
         if (GameController.instance.lives <= 0 || this.transform.position.y == -5.87)
         {
