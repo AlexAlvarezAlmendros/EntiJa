@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -540,9 +540,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1770419873}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 100
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 50
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -665,9 +665,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1937111970}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 100
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 50
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1477,6 +1477,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1958540528}
   - component: {fileID: 1958540527}
+  - component: {fileID: 1958540529}
   m_Layer: 0
   m_Name: MUSIC
   m_TagString: Untagged
@@ -1548,6 +1549,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1958540529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958540526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db03211dcbb81d146926408429d496d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Music: {fileID: 872835777}
+  SFX: {fileID: 569333743}
 --- !u!1 &1960885839
 GameObject:
   m_ObjectHideFlags: 0
