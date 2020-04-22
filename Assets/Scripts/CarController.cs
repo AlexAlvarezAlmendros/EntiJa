@@ -68,13 +68,23 @@ public class CarController : MonoBehaviour
 
     void Start()
     {
+        //SETTERS
         GameController.instance.lives = 3;
         FindObjectOfType<AudioManager>().Play("GameMusic");
         audioplaying = false;
         giveEnergy(100);
         transform.position = new Vector3(-3.877f, -3.883f, 0f);
+
+        GameController.instance.GameON = true;
+        GameController.instance.hiscore = 0;
+        GameController.instance.energy = 100;
+        highscoreText.SetActive(false);
+        GameController.instance.isrecord = false;
+
+        //GETTERS
         animator = GetComponent<Animator>();
         collider = GetComponent<BoxCollider2D>();
+        rig = GetComponent<Rigidbody2D>();
 
         //ANIAMTION IDS
         GroundingID = Animator.StringToHash("Grounding");
@@ -85,19 +95,11 @@ public class CarController : MonoBehaviour
         BoostedID = Animator.StringToHash("Boosted");
         BoostedEndID = Animator.StringToHash("Exit");
 
-        rig = GetComponent<Rigidbody2D>();
-        GameObject gameControllerObject = GameObject.FindWithTag("GameController");
-
-        GameController.instance.GameON = true;
-        GameController.instance.hiscore = 0;
-        GameController.instance.energy = 100;
-
+        //SPAWNERS
         Instantiate(PrefabEnemySP, this.transform.position, Quaternion.identity);
         Instantiate(PrefabPowerUpSp, this.transform.position, Quaternion.identity);
-
-        highscoreText.SetActive(false);
-        GameController.instance.isrecord = false;
     }
+
     private void Update()
     {
         animator.SetBool(GroundingID, Driving()); 
