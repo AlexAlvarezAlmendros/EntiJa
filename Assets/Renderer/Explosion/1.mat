@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Fly2
+  m_Name: 1
   m_Shader: {fileID: -6465566751694194690, guid: 36292ef2d01a4b443b29b1d546849e49,
     type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
@@ -21,13 +21,13 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Emission:
-        m_Texture: {fileID: 2800000, guid: 22b5a9ae90b5e314e96c96ec0ffbffb4, type: 3}
+        m_Texture: {fileID: 2800000, guid: beb08d8efecf16f499317e34e6051b0b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: e8425fbe67203c0428972ecbdfdbd63a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 44d471d44ac0ab94ab7aec917fab9cf0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
     m_Colors:
-    - Color_38807C14: {r: 2.79544, g: 0, b: 2.0343778, a: 0}
+    - Color_38807C14: {r: 0, g: 1.4901961, b: 4, a: 0}
