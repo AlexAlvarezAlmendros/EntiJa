@@ -51,8 +51,13 @@ public class CarController : MonoBehaviour
     public Slider slider;
     public Animator eBarAnimator;
 
-    public Text scoreText;
+    public GameObject score;
+    private Text scoreText;
+    private Animator scoreAnimator;
+    private float scoreAnimTmp = 0;
+
     public GameObject highscoreText;
+    private Animator highScoreAnimator;
 
     //ANIMATION IDS
     private int GroundingID;
@@ -62,6 +67,8 @@ public class CarController : MonoBehaviour
     private int ShieldID;
     private int BoostedID;
     private int BoostedEndID;
+    private int ScoreWigleID;
+    private int HighScoreActiveID;
 
     //AUDIO
     private bool audioplaying;
@@ -86,6 +93,10 @@ public class CarController : MonoBehaviour
         collider = GetComponent<BoxCollider2D>();
         rig = GetComponent<Rigidbody2D>();
 
+        scoreAnimator = score.GetComponent<Animator>();
+        scoreText = score.GetComponent<Text>();
+        highScoreAnimator = highscoreText.GetComponent<Animator>();
+
         //ANIAMTION IDS
         GroundingID = Animator.StringToHash("Grounding");
         JumpedID = Animator.StringToHash("Jumped");
@@ -94,6 +105,8 @@ public class CarController : MonoBehaviour
         ShieldID = Animator.StringToHash("Active");
         BoostedID = Animator.StringToHash("Boosted");
         BoostedEndID = Animator.StringToHash("Exit");
+        ScoreWigleID = Animator.StringToHash("ScoreMilestone");
+        HighScoreActiveID = Animator.StringToHash("Highscore");
 
         //SPAWNERS
         Instantiate(PrefabEnemySP, this.transform.position, Quaternion.identity);
@@ -103,7 +116,6 @@ public class CarController : MonoBehaviour
     private void Update()
     {
         animator.SetBool(GroundingID, Driving()); 
-        if (GameController.instance.isrecord == true) { highscoreText.SetActive(true); }
 
         carHP.text = GameController.instance.lives.ToString();
 
@@ -166,8 +178,15 @@ public class CarController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        scoreText.text = GameController.instance.hiscore + " km";
-        bool isFlying = animator.GetBool(FlyingID);
+        scoreText.text = GameController.instance.hiscore + " m"; //SORE
+        if (GameController.instance.hiscore > scoreAnimTmp + 1000)
+        {
+            scoreAnimTmp += 1000;
+            scoreAnimator.SetTrigger(ScoreWigleID); //WIGLE ANIM
+        }
+        if (GameController.instance.isrecord == true) { highscoreText.SetActive(true); }
+
+        bool isFlying = animator.GetBool(FlyingID); //FLY
 
         if (transform.position.x < cam.transform.position.x - 4.5f) //MAX IZQUIERDA
         {
@@ -229,16 +248,17 @@ public class CarController : MonoBehaviour
         if (coll.gameObject.tag.Equals("Enemy") && invulnerableTime == false) //DAMAGE
         {
             FindObjectOfType<AudioManager>().Play("Explosion");
+            if (isShielded)
+            {
+                ShieldOverlay.SetBool(ShieldID, false);
+                invulnerableTime = true;
+            }
             if (!isShielded)
             {
                 invulnerableTime = true;
                 GameObject clone = (GameObject)Instantiate(explosion, this.transform.position, Quaternion.identity);
                 Destroy(clone, 1.0f);
                 GameController.instance.lives--;
-            }
-            if (isShielded)
-            {
-                ShieldOverlay.SetBool(ShieldID, false);
             }
         }
     }
