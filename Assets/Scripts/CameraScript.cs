@@ -6,7 +6,7 @@ public class CameraScript : MonoBehaviour
 {
     public GameObject Player;
     public float moveSpeed;
-    public float actualMoveSpeed;
+    private float actualMoveSpeed;
 
     private void Start()
     {
@@ -17,7 +17,7 @@ public class CameraScript : MonoBehaviour
     {
         
         if (actualMoveSpeed < 0.2f) {
-            actualMoveSpeed += 0.000001f;
+            actualMoveSpeed += 0.000005f;
         } 
         float delta = Time.deltaTime * 100;
         transform.position = new Vector3(transform.position.x + actualMoveSpeed * delta, transform.position.y, transform.position.z);
